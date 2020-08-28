@@ -10,6 +10,6 @@ import org.springframework.data.mongodb.repository.Query;
 public interface JournalRepository extends MongoRepository<Journal, String> {
     @Query("{ 'description' : ?0 }")
     List<Journal> findLikeDescription( String description );
-}                                 10
+}                                
                                                                     
                                                                     
