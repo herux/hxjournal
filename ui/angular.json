@@ -27,6 +27,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "src/assets/js/jquery/jquery.min.js",
               "src/assets/js/adminlte/adminlte.min.js"
             ]
           },

@@ -7,6 +7,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { JournalComponent } from './journal/journal.component';
 import { LedgerComponent } from './ledger/ledger.component';
 import { ReportComponent } from './report/report.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { MenubarComponent } from './menubar/menubar.component';
+import { MenuleftComponent } from './menuleft/menuleft.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { ReportComponent } from './report/report.component';
     DashboardComponent,
     JournalComponent,
     LedgerComponent,
-    ReportComponent
+    ReportComponent,
+    ToolbarComponent,
+    MenubarComponent,
+    MenuleftComponent,
   ],
   imports: [
     BrowserModule,
