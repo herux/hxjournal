@@ -4,7 +4,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item" *ngFor="let menu of menus">
                 <a routerLink="{{menu.routerLink}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="{{menu.icon}}"></i>
                   <p>{{menu.name}}</p>
                 </a>
               </li>

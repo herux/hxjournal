@@ -9,12 +9,12 @@ import { Menu } from '../models/menu';
 export class MenuleftComponent implements OnInit {
 
   menus = [
-    new Menu(1, 'Dashboard', '/dashboard'),
-    new Menu(2, 'Journal', '/journal'),
-    new Menu(3, 'COA', '/coa'),
-    new Menu(4, 'General Ledger', '/gl'),
-    new Menu(5, 'Balance Sheet', '/bs'),
-    new Menu(5, 'Income Statement', '/is'),
+    new Menu(1, 'Dashboard', '/dashboard', 'nav-icon fas fa-tachometer-alt'),
+    new Menu(2, 'Journal', '/journal', 'nav-icon fas fa-tachometer-alt'),
+    new Menu(3, 'COA', '/coa', 'nav-icon fas fa-tachometer-alt'),
+    new Menu(4, 'General Ledger', '/gl', 'nav-icon fas fa-tachometer-alt'),
+    new Menu(5, 'Balance Sheet', '/bs', 'nav-icon fas fa-tachometer-alt'),
+    new Menu(5, 'Income Statement', '/is', 'nav-icon fas fa-tachometer-alt'),
   ];
 
   constructor() { }
