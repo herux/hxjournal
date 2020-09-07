@@ -10,6 +10,7 @@ import { ReportComponent } from './report/report.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenubarComponent } from './menubar/menubar.component';
 import { MenuleftComponent } from './menuleft/menuleft.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MenuleftComponent } from './menuleft/menuleft.component';
     ToolbarComponent,
     MenubarComponent,
     MenuleftComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
