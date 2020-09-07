@@ -14,7 +14,7 @@ export class MenuleftComponent implements OnInit {
     new Menu(3, 'COA', '/coa', 'nav-icon fas fa-tachometer-alt'),
     new Menu(4, 'General Ledger', '/gl', 'nav-icon fas fa-tachometer-alt'),
     new Menu(5, 'Balance Sheet', '/bs', 'nav-icon fas fa-tachometer-alt'),
-    new Menu(5, 'Income Statement', '/is', 'nav-icon fas fa-tachometer-alt'),
+    new Menu(6, 'Income Statement', '/is', 'nav-icon fas fa-tachometer-alt'),
   ];
 
   constructor() { }
