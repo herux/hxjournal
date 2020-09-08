@@ -1,21 +1,10 @@
 package main
 
 import (
-	"net/http"
-
-	"github.com/gin-gonic/gin"
+	"hxjournal/api/routers"
 )
 
-var router *gin.Engine
-
 func main() {
-	router = gin.Default()
-
-	router.GET("/", func(c *gin.Context) {
-		c.JSON(
-			http.StatusOK,
-			gin.H{"data": "Hell0"})
-	})
-
+	var router = routers.InitRoute()
 	router.Run()
 }
