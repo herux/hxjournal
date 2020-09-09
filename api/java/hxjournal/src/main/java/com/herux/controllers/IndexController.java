@@ -13,37 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.herux.services;
+package com.herux.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
-// import com.herux.models.Journal;
-
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * JournalService class.
+ * IndexController class.
  * 
  * @author Heru Susanto
  */
-@Service
-public class JournalService {
+@RestController
+@RequestMapping("/")
+public class IndexController {
     
-    // private Journal journal;
-
-    // public Journal getJournal() {
-    //     return journal;
-    // }
-
-    // public void setJournal(Journal journal) {
-    //     this.journal = journal;
-    // }
-
-    public List<String> getAllJournals() {
-        // List<String> listJournal = new ArrayList<Journal>();
-
-        return new ArrayList<String>();
+    @RequestMapping("/")
+    public String indexPage() {
+        return "HXJournal API";
     }
 
 }
