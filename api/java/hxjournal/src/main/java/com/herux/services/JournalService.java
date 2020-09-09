@@ -18,7 +18,7 @@ package com.herux.services;
 import java.util.ArrayList;
 import java.util.List;
 
-// import com.herux.models.Journal;
+import com.herux.models.Journal;
 
 import org.springframework.stereotype.Service;
 
@@ -30,20 +30,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class JournalService {
     
-    // private Journal journal;
+    private Journal journal;
 
-    // public Journal getJournal() {
-    //     return journal;
-    // }
+    public Journal getJournal() {
+        return journal;
+    }
 
-    // public void setJournal(Journal journal) {
-    //     this.journal = journal;
-    // }
+    public void setJournal(Journal journal) {
+        this.journal = journal;
+    }
 
-    public List<String> getAllJournals() {
-        // List<String> listJournal = new ArrayList<Journal>();
+    public List<Journal> getAllJournals() {
+        List<Journal> listJournal = new ArrayList<Journal>();
 
-        return new ArrayList<String>();
+        return listJournal;
     }
 
 }

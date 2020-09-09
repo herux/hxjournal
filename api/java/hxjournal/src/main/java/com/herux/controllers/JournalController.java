@@ -18,7 +18,7 @@ package com.herux.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-// import com.herux.models.Journal;
+import com.herux.models.Journal;
 import com.herux.services.JournalService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +39,7 @@ public class JournalController {
     private JournalService journalService;
 
     @RequestMapping("/apis/v1/journals")
-    public List<String> all() {
-        // return "test journals";
-        return new ArrayList<String>();
+    public List<Journal> all() {
+        return journalService.getAllJournals();
     }
 }

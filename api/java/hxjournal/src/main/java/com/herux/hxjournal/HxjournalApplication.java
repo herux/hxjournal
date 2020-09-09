@@ -29,7 +29,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, SecurityAutoConfiguration.class }) 
-@ComponentScan({"com.herux.controllers"})
+@ComponentScan({"com.herux.controllers", "com.herux.services"})
 @EntityScan("com.herux.models")
 @EnableMongoRepositories("com.herux.repositories")
 public class HxjournalApplication {
