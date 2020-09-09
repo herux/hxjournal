@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class JournalController {
     
     @Autowired
-    // private JournalService journalService;
+    private JournalService journalService;
 
     @RequestMapping("/apis/v1/journals")
     public List<String> all() {
