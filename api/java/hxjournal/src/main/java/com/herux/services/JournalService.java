@@ -42,7 +42,12 @@ public class JournalService {
 
     public List<Journal> getAllJournals() {
         List<Journal> listJournal = new ArrayList<Journal>();
-
+        listJournal.add(new Journal("1", "Journal1"));
+        listJournal.add(new Journal("2", "Journal2"));
+        listJournal.add(new Journal("3", "Journal3"));
+        listJournal.add(new Journal("4", "Journal4"));
+        listJournal.add(new Journal("5", "Journal5"));
+        listJournal.add(new Journal("6", "Journal6"));
         return listJournal;
     }
 

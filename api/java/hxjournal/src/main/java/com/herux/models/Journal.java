@@ -17,7 +17,7 @@ package com.herux.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Service;
+
 
 /**
  * Journal document classes.
@@ -30,6 +30,11 @@ public class Journal {
     @Id
     private String id;
     private String description;
+
+    public Journal(String id, String description){
+        this.id = id;
+        this.description = description;
+    }
 
     public String getId() {
         return id;
