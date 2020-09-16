@@ -17,40 +17,37 @@ package com.herux.hxjournal;
 
 import java.util.Arrays;
 
+import com.herux.models.Journal;
+import com.herux.repositories.JournalRepository;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, SecurityAutoConfiguration.class }) 
-@ComponentScan({"com.herux.controllers", "com.herux.services"})
+@ComponentScan({"com.herux.controllers", "com.herux.services", "com.herux.repositories"})
 @EntityScan("com.herux.models")
 @EnableMongoRepositories("com.herux.repositories")
 public class HxjournalApplication {
+
+	private JournalRepository repository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(HxjournalApplication.class, args);
 	}
 
-	// @Bean
-	// public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-	// 	return args -> {
+	// @Override
+	// public void run(String... args) throws Exception {
+	// 	repository.deleteAll();
 
-	// 		System.out.println("Let's inspect the beans provided by Spring Boot:");
-
-	// 		String[] beanNames = ctx.getBeanDefinitionNames();
-	// 		Arrays.sort(beanNames);
-	// 		for (String beanName : beanNames) {
-	// 			System.out.println(beanName);
-	// 		}
-
-	// 	};
+	// 	repository.save(new Journal("1", "Journal 1"));
+	// 	repository.save(new Journal("2", "Journal 2"));
+	// 	repository.save(new Journal("3", "Journal 3"));
 	// }
 
 }

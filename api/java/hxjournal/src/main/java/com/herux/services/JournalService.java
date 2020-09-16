@@ -19,7 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.herux.models.Journal;
+import com.herux.repositories.JournalRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -30,6 +32,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class JournalService {
     
+    @Autowired
+    private JournalRepository repository;
     private Journal journal;
 
     public Journal getJournal() {
@@ -41,13 +45,10 @@ public class JournalService {
     }
 
     public List<Journal> getAllJournals() {
-        List<Journal> listJournal = new ArrayList<Journal>();
-        listJournal.add(new Journal("1", "Journal1"));
-        listJournal.add(new Journal("2", "Journal2"));
-        listJournal.add(new Journal("3", "Journal3"));
-        listJournal.add(new Journal("4", "Journal4"));
-        listJournal.add(new Journal("5", "Journal5"));
-        listJournal.add(new Journal("6", "Journal6"));
+        // repository.save(new Journal("1", "Journal 1"));
+		// repository.save(new Journal("2", "Journal 2"));
+		// repository.save(new Journal("3", "Journal 3"));
+        List<Journal> listJournal = repository.findAll();
         return listJournal;
     }
 

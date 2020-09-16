@@ -15,29 +15,22 @@
  */
 package com.herux.models;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
 /**
- * Journal document classes.
+ * Account document classes.
  * 
  * @author Heru Susanto
  */
 @Document
-public class Journal {
+public class Account {
     
     @Id
     private String id;
-    private String description;
-    @Autowired
-    private JournalDetail journalDetail;
-
-    public Journal(String id, String description){
-        this.id = id;
-        this.description = description;
-    }
+    private String code;
+    private String name;
 
     public String getId() {
         return id;
@@ -47,27 +40,20 @@ public class Journal {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCode() {
+        return code;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public JournalDetail getJournalDetail() {
-        return journalDetail;
+    public String getName() {
+        return name;
     }
 
-    public void setJournalDetail(JournalDetail journalDetail) {
-        this.journalDetail = journalDetail;
-    }
-
-    @Override
-    public String toString() {
-        return String.format(
-        "Journal[id=%s, description='%s']",
-            id, description);
+    public void setName(String name) {
+        this.name = name;
     }
 
 }
