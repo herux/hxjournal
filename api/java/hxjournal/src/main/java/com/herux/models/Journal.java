@@ -15,6 +15,8 @@
  */
 package com.herux.models;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -32,10 +34,9 @@ public class Journal {
     private String id;
     private String description;
     @Autowired
-    private JournalDetail journalDetail;
+    private List<JournalDetail> journalDetail;
 
-    public Journal(String id, String description){
-        this.id = id;
+    public Journal(String description){
         this.description = description;
     }
 
@@ -55,11 +56,11 @@ public class Journal {
         this.description = description;
     }
 
-    public JournalDetail getJournalDetail() {
+    public List<JournalDetail> getJournalDetail() {
         return journalDetail;
     }
 
-    public void setJournalDetail(JournalDetail journalDetail) {
+    public void setJournalDetail(List<JournalDetail> journalDetail) {
         this.journalDetail = journalDetail;
     }
 
