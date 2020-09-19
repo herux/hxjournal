@@ -35,6 +35,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories("com.herux.repositories")
 public class HxjournalApplication {
 
+	public static String API_BASE_URL = "/apis/v1";
 	private JournalRepository repository;
 
 	public static void main(String[] args) {
