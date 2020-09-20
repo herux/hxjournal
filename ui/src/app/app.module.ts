@@ -12,6 +12,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenubarComponent } from './menubar/menubar.component';
 import { MenuleftComponent } from './menuleft/menuleft.component';
 import { TableComponent } from './table/table.component';
+import { CoaComponent } from './coa/coa.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TableComponent } from './table/table.component';
     MenubarComponent,
     MenuleftComponent,
     TableComponent,
+    CoaComponent,
   ],
   imports: [
     BrowserModule,
