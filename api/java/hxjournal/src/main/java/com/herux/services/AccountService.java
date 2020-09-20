@@ -33,5 +33,9 @@ public class AccountService {
         List<Account> listAccount = repository.findAll();
         return listAccount;
     }
+
+    public void addAccount(Account account) {
+        repository.save(account);
+    }
     
 }

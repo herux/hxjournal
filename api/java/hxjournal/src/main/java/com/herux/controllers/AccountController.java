@@ -21,7 +21,9 @@ import com.herux.models.Account;
 import com.herux.services.AccountService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,12 +36,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/apis/v1")
 public class AccountController {
-    
+
     @Autowired
     private AccountService accountService;
 
+    @PostMapping("/accounts")
+    public Account addAccount(@Validated Account account) {
+        accountService.addAccount(account);
+        return account;
+    }
+
     @GetMapping("/accounts")
-    public List<Account> all() {
+    public List<Account> getAll() {
         return accountService.getAllAccounts();
     }
 
