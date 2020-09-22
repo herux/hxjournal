@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class TableComponent {
   @Input() title: string;
+  @Input() data: any[];
 
   constructor() {
    }
