@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-ledger',
+  selector: 'hxledger',
   templateUrl: './ledger.component.html',
   styleUrls: ['./ledger.component.css']
 })

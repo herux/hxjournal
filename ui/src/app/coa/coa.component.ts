@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-coa',
+  selector: 'hxcoa',
   templateUrl: './coa.component.html',
   styleUrls: ['./coa.component.css']
 })

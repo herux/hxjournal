@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'menubar',
+  selector: 'hxmenubar',
   templateUrl: './menubar.component.html',
   styleUrls: ['./menubar.component.css']
 })

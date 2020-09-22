@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'toolbar',
+    selector: 'hxtoolbar',
     templateUrl: './toolbar.component.html',
     styleUrls: ['./toolbar.component.css']
 })

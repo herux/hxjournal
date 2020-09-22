@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Menu } from '../models/menu';
 
 @Component({
-  selector: 'menuleft',
+  selector: 'hxmenuleft',
   templateUrl: './menuleft.component.html',
   styleUrls: ['./menuleft.component.css']
 })
