@@ -31,6 +31,11 @@ public class Account {
     private String id;
     private String code;
     private String name;
+    private String type;
+    private String position;
+    private String currency;
+    private Currency openbalance;
+    private Date asofdate;
 
     public String getId() {
         return id;
@@ -54,6 +59,46 @@ public class Account {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public Currency getOpenBalance() {
+        return openbalance;
+    }
+
+    public void setOpenBalance(Currency openbalance) {
+        this.openbalance = openbalance;
+    }
+
+    public Date getAsOfDate() {
+        return asofdate;
+    }
+
+    public void setAsOfDate(Date asofdate) {
+        this.asofdate = asofdate;
     }
 
 }

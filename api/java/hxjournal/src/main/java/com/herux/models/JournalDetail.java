@@ -31,8 +31,11 @@ public class JournalDetail {
     @Id
     private String id;
     private Account account;
-    private Currency debit;
-    private Currency credit;
+    private String currency;
+    private Currency debitbase;
+    private Currency creditbase;
+    private Currency debitori;
+    private Currency creditori;
 
     public JournalDetail() {
 
@@ -46,20 +49,44 @@ public class JournalDetail {
         this.account = account;
     }
 
-    public Currency getDebit() {
-        return debit;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setDebit(Currency debit) {
-        this.debit = debit;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
-    public Currency getCredit() {
-        return credit;
+    public Currency getDebitBase() {
+        return debitbase;
     }
 
-    public void setCredit(Currency credit) {
-        this.credit = credit;
+    public void setDebitBase(Currency debitbase) {
+        this.debitbase = debitbase;
+    }
+
+    public Currency getCreditBase() {
+        return creditbase;
+    }
+
+    public void setCreditBase(Currency creditbase) {
+        this.creditbase = creditbase;
+    }
+
+    public Currency getDebitOri() {
+        return debitori;
+    }
+
+    public void setDebitOri(Currency debitori) {
+        this.debitori = debitori;
+    }
+
+    public Currency getCreditOri() {
+        return creditori;
+    }
+
+    public void setCreditOri(Currency creditori) {
+        this.creditori = creditori;
     }
 
 }

@@ -32,6 +32,9 @@ public class Journal {
     
     @Id
     private String id;
+    private String transno;
+    private Date dates;
+    private String reffno;
     private String description;
     @Autowired
     private List<JournalDetail> journalDetail;
@@ -46,6 +49,30 @@ public class Journal {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTransNo() {
+        return transno;
+    }
+
+    public void setTransNo(String transno) {
+        this.transno = transno;
+    }
+
+    public Date getDates() {
+        return dates;
+    }
+
+    public void setDates(Date dates) {
+        this.dates = dates;
+    }
+
+    public String getReffNo() {
+        return reffno;
+    }
+
+    public void setReffNo(String reffno) {
+        this.reffno = reffno;
     }
 
     public String getDescription() {
