@@ -15,6 +15,9 @@
  */
 package com.herux.models;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -34,7 +37,7 @@ public class Account {
     private String type;
     private String position;
     private String currency;
-    private Currency openbalance;
+    private BigDecimal openbalance;
     private Date asofdate;
 
     public String getId() {
@@ -85,11 +88,11 @@ public class Account {
         this.currency = currency;
     }
 
-    public Currency getOpenBalance() {
+    public BigDecimal getOpenBalance() {
         return openbalance;
     }
 
-    public void setOpenBalance(Currency openbalance) {
+    public void setOpenBalance(BigDecimal openbalance) {
         this.openbalance = openbalance;
     }
 

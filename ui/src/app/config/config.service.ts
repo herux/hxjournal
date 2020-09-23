@@ -4,10 +4,13 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ConfigService {
+  configUrl = '';
 
   constructor(private http: HttpClient) { }
+
+  getConfig() {
+    return this.http.get(this.configUrl);
+  }
 }
