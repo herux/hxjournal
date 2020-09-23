@@ -6,11 +6,11 @@ import { catchError, retry } from 'rxjs/operators';
 
 @Injectable()
 export class ConfigService {
-  configUrl = '';
+  accountUrl = 'http://localhost:3030/apis/v1/accounts';
 
   constructor(private http: HttpClient) { }
 
-  getConfig() {
-    return this.http.get(this.configUrl);
+  getAccount() {
+    return this.http.get(this.accountUrl);
   }
 }
