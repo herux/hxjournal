@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Config } from '../config/config';
+import { Config } from '../models/config';
+import {HttpClient} from "@angular/common/http";
+import { Observable, throwError } from 'rxjs';
+import { Account } from '../models/account';
 import { ConfigService } from '../config/config.service';
 
 @Component({
@@ -8,23 +11,23 @@ import { ConfigService } from '../config/config.service';
   styleUrls: ['./coa.component.css']
 })
 export class CoaComponent implements OnInit {
-  configService: ConfigService;
-  config:  Config;
-  constructor() { }
+  accounts: Observable<Account[]>;
+  constructor(private http:HttpClient, private configService: ConfigService) {
+  }
 
-  showConfig() {
-    this.configService.getConfig()
-      .subscribe((data: Config) => {
-        console.log(data);
-        this.config = {
-          accountDataUrl: (data as Config).accountDataUrl,
-          journalDataUrl: (data as Config).journalDataUrl
-        }
+  getAccounts(): Observable<Account[]> {
+    this.configService.getAccountApiUrl((url) => {
+      console.log('--> '+url);  
+      this.http.get<Account>(url)
+        .subscribe((data: Account) => {
+          console.log('--1 ',  data);  
       });
+    });
+    return null;
   }
 
   ngOnInit(): void {
-    this.showConfig();
+    this.getAccounts();
   }
 
 }

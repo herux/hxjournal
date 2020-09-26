@@ -1,11 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, OnInit } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Config } from '../config/config';
+import { Config } from '../models/config';
+import { _ParseAST } from '@angular/compiler';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ConfigService {
   configUrl = 'assets/config.json';
 
@@ -14,4 +17,12 @@ export class ConfigService {
   getConfig() {
     return this.http.get<Config>(this.configUrl);
   }
+
+  getAccountApiUrl(callback) {
+    this.getConfig()
+      .subscribe((data: Config) => {
+        callback(data.accountDataUrl);
+      });
+  }
+
 }
