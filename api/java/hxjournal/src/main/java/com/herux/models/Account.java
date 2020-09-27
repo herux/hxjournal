@@ -34,8 +34,8 @@ public class Account {
     private String id;
     private String code;
     private String name;
-    private String type;
-    private String position;
+    private AccountType type;
+    private AccountPosition position;
     private String currency;
     private BigDecimal openbalance;
     private Date asofdate;
@@ -64,19 +64,19 @@ public class Account {
         this.name = name;
     }
 
-    public String getType() {
+    public AccountType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(AccountType type) {
         this.type = type;
     }
 
-    public String getPosition() {
+    public AccountPosition getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(AccountPosition position) {
         this.position = position;
     }
 
