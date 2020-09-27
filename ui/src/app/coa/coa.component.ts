@@ -11,14 +11,16 @@ import { ConfigService } from '../config/config.service';
   styleUrls: ['./coa.component.css']
 })
 export class CoaComponent implements OnInit {
-  accounts: [];
+  accounts: Account[];
   constructor(private http:HttpClient, private configService: ConfigService) {
   }
 
   getAccounts() {
     this.configService.getAccountApiUrl((url) => {
       this.http.get<Account[]>(url)
-        .subscribe(accounts => this.accounts = accounts);
+        .subscribe(accounts => {
+          this.accounts = accounts;
+        });
     });
     return null;
   }
