@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Toolaction } from '../models/toolaction';
 
 @Component({
   selector: 'hxtable',
@@ -8,11 +9,12 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TableComponent implements OnInit {
   @Input() title: string
   @Input() data: any[]
+  @Input() toolactions: Toolaction[]
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    console.log('data: ', this.data);
+    console.log('data: ', this.toolactions); 
   }
 
   
