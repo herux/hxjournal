@@ -39,8 +39,7 @@
       <Unit>
         <Filename Value="indexact.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <CursorPos X="27" Y="8"/>
+        <CursorPos X="43" Y="13"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
@@ -59,7 +58,9 @@
         <Filename Value="brokers.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Brokers"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
+        <CursorPos X="53" Y="11"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
