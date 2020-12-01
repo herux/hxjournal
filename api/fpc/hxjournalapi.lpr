@@ -1,4 +1,4 @@
-program hxjournal;
+program hxjournalapi;
 
 {$mode objfpc}{$H+}
 
@@ -6,8 +6,8 @@ uses
 {$IFDEF UNIX}{$IFDEF UseCThreads}
   cthreads,
 {$ENDIF}{$ENDIF}
-  BrookApplication, Brokers, indexAct;
+  BrookApplication, Brokers, indexact, module;
 
 begin
-  BrookApp.Run;
+  Application.Run;
 end.

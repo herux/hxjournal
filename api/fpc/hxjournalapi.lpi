@@ -5,8 +5,10 @@
     <General>
       <Flags>
         <MainUnitHasCreateFormStatements Value="False"/>
+        <MainUnitHasTitleStatement Value="False"/>
+        <MainUnitHasScaledStatement Value="False"/>
       </Flags>
-      <Title Value="hxjournal"/>
+      <Title Value="hxjournalapi"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
     </General>
@@ -27,20 +29,29 @@
     </RequiredPackages>
     <Units>
       <Unit>
-        <Filename Value="hxjournal.lpr"/>
+        <Filename Value="hxjournalapi.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="30" Y="6"/>
         <UsageCount Value="20"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="indexact.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="indexAct"/>
         <IsVisibleTab Value="True"/>
-        <CursorPos X="15" Y="29"/>
+        <CursorPos X="27" Y="8"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="module.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="28" Y="8"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
@@ -48,7 +59,7 @@
         <Filename Value="brokers.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Brokers"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
@@ -58,7 +69,7 @@
   <CompilerOptions>
     <Version Value="11"/>
     <Target>
-      <Filename Value="hxjournal.fbf" ApplyConventions="False"/>
+      <Filename Value="hxjournalapi.hx" ApplyConventions="False"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>

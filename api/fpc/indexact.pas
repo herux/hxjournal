@@ -1,4 +1,4 @@
-unit indexAct;
+unit indexact;
 
 {$mode objfpc}{$H+}
 
@@ -9,23 +9,23 @@ uses
 
 type
 
-  { TIndexAction }
+  { TIndex }
 
-  TIndexAction = class(TBrookAction)
+  TIndex = class(TBrookAction)
   public
     procedure Get; override;
   end;
 
 implementation
 
-{ TIndexAction }
+{ TIndex }
 
-procedure TIndexAction.Get;
+procedure TIndex.Get;
 begin
   Write('Your content here ...');
 end;
 
 initialization
-  TIndexAction.Register('*');
+  TIndex.Register('/', True);
 
 end.
