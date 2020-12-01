@@ -3,3 +3,7 @@ ui/node_modules
 api/java/hxjournal/bin
 api/fpc/backup
 api/nodejs/node_modules
+*.o
+*.ppu
+*.compiled
+*.hx
