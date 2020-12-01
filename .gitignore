@@ -29,3 +29,5 @@ unittest/unittest_Icon.ico
 *.ppu
 *.compiled
 *.rst
+*.hx
+*.or
