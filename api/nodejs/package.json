@@ -1,0 +1,11 @@
+{
+  "name": "hxjournal_api_nodejs",
+  "version": "1.0.0",
+  "description": "HXJournal API using Nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "herux",
+  "license": "ISC"
+}
