@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Journal = require('../models/journal');
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
     let query = req.query;
     Journal
 	    .find(query)
