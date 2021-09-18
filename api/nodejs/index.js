@@ -10,14 +10,14 @@ mongoose.connect(`mongodb://${host}:${port}/${database}`);
 const coaRoute = require('./app/routers/coa');
 const journalRoute = require('./app/routers/journal');
 
-app.use('/api/coa', coaRoute);
-app.use('/api/journal', journalRoute);
+app.use('/apis/v1/coa', coaRoute);
+app.use('/apis/v1/journal', journalRoute);
 app.use(function (req, res, next) {  
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-var httpPort = process.env.PORT || 7080;
+var httpPort = process.env.PORT || 3030;
 app.listen(httpPort);
 console.log('Go to https://localhost:' + httpPort);
