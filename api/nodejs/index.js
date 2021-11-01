@@ -10,6 +10,7 @@ mongoose.connect(`mongodb://${host}:${port}/${database}`);
 const coaRoute = require('./app/routers/coa');
 const journalRoute = require('./app/routers/journal');
 
+app.use(express.json());
 app.use('/apis/v1/coa', coaRoute);
 app.use('/apis/v1/journal', journalRoute);
 app.use(function (req, res, next) {  

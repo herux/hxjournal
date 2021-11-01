@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
 		// .sort(query.order)
 		// .skip(parseInt(query.page) - 1)
 	    .exec(function (err, coas) {
+			console.log('coas: ', coas, err);
 		    if (err) 
 				return Utils.setResponse(res, false, err, {});
 		    
@@ -20,12 +21,21 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+	console.log(req.body);
 	let newCoa = new Coa({
-		coa_no: req.body.coa_no,
-		coa_type: req.body.coa_type,
-		name: req.body.name,
-		debit: req.body.debit,
-		credit: req.body.credit
+		coa_gen : req.body.coa_gen,
+		name : req.body.name,
+		coa_category : req.body.coa_category,
+		coa_dk : req.body.coa_dk,
+		coa_gd : req.body.coa_gd,
+		coa_level : req.body.coa_level,
+		coa_no : req.body.coa_no,
+		createdat : req.body.createdat,
+		coa_sad : req.body.coa_sad,
+		coa_sak : req.body.coa_sak,
+		coa_md : req.body.coa_md,
+		coa_mk : req.body.coa_mk,
+		coa_wno : req.body.coa_wno
 	})
 
 	newCoa.save((err) => {
