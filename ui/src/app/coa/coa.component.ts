@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { Coa } from '../models/coa';
 import { ConfigService } from '../config/config.service';
 import { Toolaction } from '../models/toolaction';
+import { UtilsService } from '../common/utils';
 
 @Component({
   selector: 'hxcoa',
@@ -15,16 +16,29 @@ export class CoaComponent implements OnInit {
   accounts: Coa[];
   toolactions: Toolaction[] = [];
 
-  constructor(private http:HttpClient, private configService: ConfigService) {
+  constructor(private http:HttpClient, private configService: ConfigService, 
+    private utilsService: UtilsService) {
   }
 
   getCoa() {
     this.configService.getCoaApiUrl((url) => {
-      console.log('url, ', url);
       this.http.get<Coa[]>(url)
         .subscribe((coa: any) => {
-          console.log('coa, ', coa);
           if (coa.r) {
+            this.utilsService.renamePropArray(coa.d, 'coa_category', 'category');
+            this.utilsService.renamePropArray(coa.d, 'coa_dk', 'dk');
+            this.utilsService.renamePropArray(coa.d, 'coa_gd', 'gd');
+            this.utilsService.renamePropArray(coa.d, 'coa_gen', 'gen');
+            this.utilsService.renamePropArray(coa.d, 'coa_level', 'level');
+            this.utilsService.renamePropArray(coa.d, 'coa_md', 'md');
+            this.utilsService.renamePropArray(coa.d, 'coa_mk', 'mk');
+            this.utilsService.renamePropArray(coa.d, 'coa_no', 'coa number');
+            this.utilsService.renamePropArray(coa.d, 'coa_sad', 'sad');
+            this.utilsService.renamePropArray(coa.d, 'coa_sak', 'sak');
+            this.utilsService.renamePropArray(coa.d, 'coa_wno', 'coa parent');
+            this.utilsService.renamePropArray(coa.d, 'createdat', 'created at');
+            this.utilsService.removePropExceptsArray(coa.d, 
+              ['category', 'dk', 'gd', 'gen', 'level', 'md', 'mk', 'coa number', 'sad', 'sak', 'coa parent', 'created at']);
             this.accounts = coa.d;
           }
         });
