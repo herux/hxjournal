@@ -1,4 +1,4 @@
-export interface Account {
+export interface Coa {
     id: string;
     code: string;
     name: string;

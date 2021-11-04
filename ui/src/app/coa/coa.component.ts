@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Config } from '../models/config';
 import {HttpClient} from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
-import { Account } from '../models/account';
+import { Coa } from '../models/coa';
 import { ConfigService } from '../config/config.service';
 import { Toolaction } from '../models/toolaction';
 
@@ -12,17 +12,21 @@ import { Toolaction } from '../models/toolaction';
   styleUrls: ['./coa.component.css']
 })
 export class CoaComponent implements OnInit {
-  accounts: Account[];
+  accounts: Coa[];
   toolactions: Toolaction[] = [];
 
   constructor(private http:HttpClient, private configService: ConfigService) {
   }
 
-  getAccounts() {
-    this.configService.getAccountApiUrl((url) => {
-      this.http.get<Account[]>(url)
-        .subscribe(accounts => {
-          this.accounts = accounts;
+  getCoa() {
+    this.configService.getCoaApiUrl((url) => {
+      console.log('url, ', url);
+      this.http.get<Coa[]>(url)
+        .subscribe((coa: any) => {
+          console.log('coa, ', coa);
+          if (coa.r) {
+            this.accounts = coa.d;
+          }
         });
     });
     return null;
@@ -42,9 +46,8 @@ export class CoaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAccounts();
+    this.getCoa();
     this.getToolActions();
-    console.log(this.toolactions);
   }
 
 }

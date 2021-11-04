@@ -18,10 +18,10 @@ export class ConfigService {
     return this.http.get<Config>(this.configUrl);
   }
 
-  getAccountApiUrl(callback) {
+  getCoaApiUrl(callback) {
     this.getConfig()
       .subscribe((data: Config) => {
-        callback(data.accountDataUrl);
+        callback(data.coaDataUrl);
       });
   }
 

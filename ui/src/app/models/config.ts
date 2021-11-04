@@ -1,4 +1,4 @@
 export interface Config {
-    accountDataUrl: string;
+    coaDataUrl: string;
     journalDataUrl: string;
 }

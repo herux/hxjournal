@@ -1,4 +1,4 @@
 {
-    "accountDataUrl": "http://localhost:3030/apis/v1/coa",
+    "coaDataUrl": "http://localhost:3030/apis/v1/coa",
     "journalDataUrl": "http://localhost:3030/apis/v1/journal"
   }
