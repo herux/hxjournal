@@ -14,6 +14,8 @@ import { MenuleftComponent } from './menuleft/menuleft.component';
 import { TableComponent } from './table/table.component';
 import { CoaComponent } from './coa/coa.component';
 import { ToolactionComponent } from './toolaction/toolaction.component';
+import { StudentComponent } from './student/student.component';
+import { StudentpaymentComponent } from './studentpayment/studentpayment.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ToolactionComponent } from './toolaction/toolaction.component';
     TableComponent,
     CoaComponent,
     ToolactionComponent,
+    StudentComponent,
+    StudentpaymentComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,5 +3,6 @@ export class Menu {
         public id: number,
         public name: string,
         public routerLink: string,
-        public icon: string) {}
+        public icon: string,
+        public className: string) {}
 }
