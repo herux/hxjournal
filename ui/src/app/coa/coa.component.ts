@@ -13,7 +13,7 @@ import { UtilsService } from '../common/utils';
   styleUrls: ['./coa.component.css']
 })
 export class CoaComponent implements OnInit {
-  accounts: Coa[];
+  coas: Coa[];
   toolactions: Toolaction[] = [];
 
   constructor(private http:HttpClient, private configService: ConfigService, 
@@ -39,7 +39,7 @@ export class CoaComponent implements OnInit {
             this.utilsService.renamePropArray(coa.d, 'createdat', 'created at');
             this.utilsService.removePropExceptsArray(coa.d, 
               ['category', 'dk', 'gd', 'gen', 'level', 'md', 'mk', 'coa number', 'sad', 'sak', 'coa parent', 'created at']);
-            this.accounts = coa.d;
+            this.coas = coa.d;
           }
         });
     });

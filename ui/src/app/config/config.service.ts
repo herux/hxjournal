@@ -25,4 +25,11 @@ export class ConfigService {
       });
   }
 
+  getStudentApiUrl(callback) {
+    this.getConfig()
+      .subscribe((data: Config) => {
+        callback(data.studentDataUrl);
+      });
+  }
+
 }
