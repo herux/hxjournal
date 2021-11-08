@@ -10,6 +10,7 @@ export class ToolactionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
