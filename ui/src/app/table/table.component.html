@@ -7,7 +7,8 @@
         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
         
         <div class="input-group-append" *ngFor="let toolaction of toolactions">
-          <button type="submit" class="{{toolaction.btnClass}}">
+          <!-- (click)="{{toolaction.action}}" -->
+          <button type="submit" class="{{toolaction.btnClass}}" (click)="toolActionBtnClicked(toolaction.action)"> 
             <i class="{{toolaction.icon}}"></i>
           </button>
         </div>

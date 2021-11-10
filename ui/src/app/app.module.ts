@@ -16,6 +16,7 @@ import { CoaComponent } from './coa/coa.component';
 import { ToolactionComponent } from './toolaction/toolaction.component';
 import { StudentComponent } from './student/student.component';
 import { StudentpaymentComponent } from './studentpayment/studentpayment.component';
+import { BtnEventEmitterService } from './btn-event-emitter.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { StudentpaymentComponent } from './studentpayment/studentpayment.compone
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    BtnEventEmitterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

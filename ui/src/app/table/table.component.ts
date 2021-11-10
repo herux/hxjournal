@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Toolaction } from '../models/toolaction';
+import { BtnEventEmitterService } from '../btn-event-emitter.service'; 
 
 @Component({
   selector: 'hxtable',
@@ -11,10 +12,14 @@ export class TableComponent implements OnInit {
   @Input() data: any[]
   @Input() toolactions: Toolaction[]
 
-  constructor() {}
+  constructor(private btnEventEmitterService: BtnEventEmitterService) {}
+
+  toolActionBtnClicked(btnName: string) {
+    this.btnEventEmitterService.onToolActionBtnClick();
+  }
 
   ngOnInit(): void {
-    console.log('data: ', this.toolactions); 
+    console.log('toolactions: ', this.toolactions); 
   }
 
   

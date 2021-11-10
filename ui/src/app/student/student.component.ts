@@ -47,10 +47,10 @@ export class StudentComponent implements OnInit {
 
   getToolActions() {
     let TA_CONST = [
-      { btnClass: 'btn btn-default', icon: 'fas fa-search', action: '' }, 
+      { btnClass: 'btn btn-default', icon: 'fas fa-search', action: 'btnClick()' }, 
       { btnClass: 'btn btn-default', icon: 'fas fa-file-invoice', action: '' },
       { btnClass: 'btn btn-default', icon: 'fas fa-filter', action: '' },
-      // { btnClass: 'btn btn-default', icon: 'fas fa-plus', action: '' },
+      { btnClass: 'btn btn-default', icon: 'fas fa-plus', action: 'btnClick()' },
     ];
     for (let index = 0; index < TA_CONST.length; index++) {
       let toolaction = TA_CONST[index]; 
