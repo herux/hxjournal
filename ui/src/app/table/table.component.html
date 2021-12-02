@@ -8,7 +8,7 @@
         
         <div class="input-group-append" *ngFor="let toolaction of toolactions">
           <!-- (click)="{{toolaction.action}}" -->
-          <button type="submit" class="{{toolaction.btnClass}}" (click)="toolActionBtnClicked(toolaction.action)"> 
+          <button type="submit" class="{{toolaction.btnClass}}" (click)="toolActionBtnClicked(toolaction.action, 2)"> 
             <i class="{{toolaction.icon}}"></i>
           </button>
         </div>

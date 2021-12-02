@@ -14,11 +14,12 @@ export class MenuleftComponent implements OnInit {
     new Menu(2, 'Journal', '/journal', 'nav-icon fas fa-tachometer-alt', 'nav-item'),
     new Menu(3, 'COA', '/coa', 'nav-icon fas fa-tachometer-alt', 'nav-item'),
     new Menu(4, 'General Ledger', '/gl', 'nav-icon fas fa-tachometer-alt', 'nav-item'),
-    new Menu(5, 'Balance Sheet', '/bs', 'nav-icon fas fa-tachometer-alt', 'nav-item'),
-    new Menu(6, 'Income Statement', '/is', 'nav-icon fas fa-tachometer-alt', 'nav-item'),
     new Menu(0, 'Transaction', '', '', 'nav-header'),
     new Menu(7, 'Student', '/student', 'nav-icon fas fa-tachometer-alt', 'nav-item'),
     new Menu(8, 'Student Payment', '/studentpayment', 'nav-icon fas fa-tachometer-alt', 'nav-item'),
+    new Menu(0, 'Report', '', '', 'nav-header'),
+    new Menu(5, 'Balance Sheet', '/bs', 'nav-icon fas fa-tachometer-alt', 'nav-item'),
+    new Menu(6, 'Income Statement', '/is', 'nav-icon fas fa-tachometer-alt', 'nav-item'),
   ];
 
   constructor() { }

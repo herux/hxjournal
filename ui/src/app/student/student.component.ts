@@ -5,6 +5,8 @@ import { Student } from '../models/student';
 import { ConfigService } from '../config/config.service';
 import { Toolaction } from '../models/toolaction';
 import { UtilsService } from '../common/utils';
+import { BtnEventEmitterService } from '../btn-event-emitter.service';
+import { ToolactionServiceEvent } from '../toolaction-service-event';
 
 @Component({
   selector: 'app-student',
@@ -16,7 +18,7 @@ export class StudentComponent implements OnInit {
   toolactions: Toolaction[] = [];
 
   constructor(private http:HttpClient, private configService: ConfigService, 
-    private utilsService: UtilsService) {
+    private utilsService: UtilsService, private btnEmitter: BtnEventEmitterService) {
   }
 
   getStudent() {
@@ -45,12 +47,22 @@ export class StudentComponent implements OnInit {
     return null;
   }
 
+  private _serviceSubscription;
+
+  toolActionBtnClicked() {
+    this._serviceSubscription = this.btnEmitter.onToolActionBtnClick.subscribe({
+      next: (event: ToolactionServiceEvent) => {
+        console.log(`Received message #${event.eventId}: ${event.message}`);
+      }
+    })
+  }
+
   getToolActions() {
     let TA_CONST = [
-      { btnClass: 'btn btn-default', icon: 'fas fa-search', action: 'btnClick()' }, 
-      { btnClass: 'btn btn-default', icon: 'fas fa-file-invoice', action: '' },
-      { btnClass: 'btn btn-default', icon: 'fas fa-filter', action: '' },
-      { btnClass: 'btn btn-default', icon: 'fas fa-plus', action: 'btnClick()' },
+      { btnClass: 'btn btn-default', icon: 'fas fa-search', action: 'DoToolActionBtnClicked("search", 41)' }, 
+      { btnClass: 'btn btn-default', icon: 'fas fa-file-invoice', action: 'DoToolActionBtnClicked("invoice", 42)' },
+      { btnClass: 'btn btn-default', icon: 'fas fa-filter', action: 'DoToolActionBtnClicked("filter", 43)' },
+      { btnClass: 'btn btn-default', icon: 'fas fa-plus', action: 'DoToolActionBtnClicked("add", 44)' },
     ];
     for (let index = 0; index < TA_CONST.length; index++) {
       let toolaction = TA_CONST[index]; 
