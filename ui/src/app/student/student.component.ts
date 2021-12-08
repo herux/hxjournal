@@ -16,9 +16,15 @@ import { ToolactionServiceEvent } from '../toolaction-service-event';
 export class StudentComponent implements OnInit {
   students: Student[];
   toolactions: Toolaction[] = [];
+  private _serviceSubscription;
 
   constructor(private http:HttpClient, private configService: ConfigService, 
     private utilsService: UtilsService, private btnEmitter: BtnEventEmitterService) {
+      this._serviceSubscription = this.btnEmitter.onToolActionBtnClick.subscribe({
+        next: (event: ToolactionServiceEvent) => {
+          console.log(`Received message: ${event.action}`);
+        }
+      })
   }
 
   getStudent() {
@@ -47,22 +53,21 @@ export class StudentComponent implements OnInit {
     return null;
   }
 
-  private _serviceSubscription;
 
-  toolActionBtnClicked() {
-    this._serviceSubscription = this.btnEmitter.onToolActionBtnClick.subscribe({
-      next: (event: ToolactionServiceEvent) => {
-        console.log(`Received message #${event.eventId}: ${event.message}`);
-      }
-    })
-  }
+  // toolActionBtnClicked() {
+  //   this._serviceSubscription = this.btnEmitter.onToolActionBtnClick.subscribe({
+  //     next: (event: ToolactionServiceEvent) => {
+  //       console.log(`Received message: ${event.action}`);
+  //     }
+  //   })
+  // }
 
   getToolActions() {
     let TA_CONST = [
-      { btnClass: 'btn btn-default', icon: 'fas fa-search', action: 'DoToolActionBtnClicked("search", 41)' }, 
-      { btnClass: 'btn btn-default', icon: 'fas fa-file-invoice', action: 'DoToolActionBtnClicked("invoice", 42)' },
-      { btnClass: 'btn btn-default', icon: 'fas fa-filter', action: 'DoToolActionBtnClicked("filter", 43)' },
-      { btnClass: 'btn btn-default', icon: 'fas fa-plus', action: 'DoToolActionBtnClicked("add", 44)' },
+      { btnClass: 'btn btn-default', icon: 'fas fa-search', action: 'DoToolActionBtnClicked("search")' }, 
+      { btnClass: 'btn btn-default', icon: 'fas fa-file-invoice', action: 'DoToolActionBtnClicked("invoice")' },
+      { btnClass: 'btn btn-default', icon: 'fas fa-filter', action: 'DoToolActionBtnClicked("filter")' },
+      { btnClass: 'btn btn-default', icon: 'fas fa-plus', action: 'DoToolActionBtnClicked("add")' },
     ];
     for (let index = 0; index < TA_CONST.length; index++) {
       let toolaction = TA_CONST[index]; 
