@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
 import { Student } from '../models/student';
@@ -15,11 +15,12 @@ import { ModalsService } from '../modals/modals.service';
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
-export class StudentComponent implements OnInit {
+export class StudentComponent implements OnInit, AfterViewInit {
   students: Student[];
   toolactions: Toolaction[] = [];
-  private _serviceSubscription;
-  @ViewChild('appDialog') modalsDialog: ModalsComponent;
+  private _serviceSubscription : any;
+  @ViewChild('hxmodals') 
+  private modalsDialog: ModalsComponent;
 
   constructor(private http:HttpClient, private configService: ConfigService, 
     private utilsService: UtilsService, private btnEmitter: BtnEventEmitterService,
@@ -35,10 +36,10 @@ export class StudentComponent implements OnInit {
     this.modalsService
       .show()
       .then((res) => {
-        // console.warn('ok clicked');
+        console.warn('ok clicked');
       })
       .catch((err) => {
-        // console.warn('rejected');
+        console.warn('rejected');
       });
   }
 
@@ -94,8 +95,11 @@ export class StudentComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit() {
     this.modalsService.register(this.modalsDialog);
+  }
+
+  ngOnInit(): void {
     this.getStudent();
     this.getToolActions();
   }

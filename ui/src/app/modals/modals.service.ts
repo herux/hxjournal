@@ -1,20 +1,17 @@
-import { Injectable } from '@angular/core';
 import { ModalsComponent } from './modals.component';
+import { TemplateRef } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class ModalsService {
 
   registeredModals: ModalsComponent;
 
   register(modals: ModalsComponent) {
     this.registeredModals = modals;
+    console.log('this.registeredModals #2: ', this.registeredModals);
   }
 
   show() {
     return new Promise((resolve, reject) => {      
-      console.log('service show');
       this.registeredModals.show();      
       this.registeredModals.onOk.subscribe(() => {
         this.registeredModals.hide();

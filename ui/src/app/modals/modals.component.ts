@@ -1,7 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
-  selector: 'app-modals',
+  selector: 'hxmodals',
   templateUrl: './modals.component.html',
   styleUrls: ['./modals.component.css']
 })
@@ -11,7 +12,7 @@ export class ModalsComponent implements OnInit {
   onCancel: EventEmitter<any> = new EventEmitter();
   style: any;
 
-  constructor(private document: Document) { }
+  constructor(@Inject(DOCUMENT) private document: Document) { }
 
   okClicked() {
     this.onOk.emit();
