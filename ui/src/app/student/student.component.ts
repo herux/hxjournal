@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
 import { Student } from '../models/student';
@@ -7,6 +7,8 @@ import { Toolaction } from '../models/toolaction';
 import { UtilsService } from '../common/utils';
 import { BtnEventEmitterService } from '../btn-event-emitter.service';
 import { ToolactionServiceEvent } from '../toolaction-service-event';
+import { ModalsComponent } from '../modals/modals.component'; 
+import { ModalsService } from '../modals/modals.service';
 
 @Component({
   selector: 'app-student',
@@ -17,14 +19,40 @@ export class StudentComponent implements OnInit {
   students: Student[];
   toolactions: Toolaction[] = [];
   private _serviceSubscription;
+  @ViewChild('appDialog') modalsDialog: ModalsComponent;
 
   constructor(private http:HttpClient, private configService: ConfigService, 
-    private utilsService: UtilsService, private btnEmitter: BtnEventEmitterService) {
+    private utilsService: UtilsService, private btnEmitter: BtnEventEmitterService,
+    private modalsService: ModalsService) {
       this._serviceSubscription = this.btnEmitter.onToolActionBtnClick.subscribe({
         next: (event: ToolactionServiceEvent) => {
-          console.log(`Received message: ${event.action}`);
+          this[event.action]();
         }
       })
+  }
+
+  searchTAClicked() {
+    this.modalsService
+      .show()
+      .then((res) => {
+        // console.warn('ok clicked');
+      })
+      .catch((err) => {
+        // console.warn('rejected');
+      });
+  }
+
+  invoiceTAClicked() {
+
+  }
+
+  filterTAClicked() {
+
+  }
+
+  addTAClicked() {
+    console.log('addTAClicked');
+    // this.modals.open();
   }
 
   getStudent() {
@@ -53,21 +81,12 @@ export class StudentComponent implements OnInit {
     return null;
   }
 
-
-  // toolActionBtnClicked() {
-  //   this._serviceSubscription = this.btnEmitter.onToolActionBtnClick.subscribe({
-  //     next: (event: ToolactionServiceEvent) => {
-  //       console.log(`Received message: ${event.action}`);
-  //     }
-  //   })
-  // }
-
   getToolActions() {
     let TA_CONST = [
-      { btnClass: 'btn btn-default', icon: 'fas fa-search', action: 'DoToolActionBtnClicked("search")' }, 
-      { btnClass: 'btn btn-default', icon: 'fas fa-file-invoice', action: 'DoToolActionBtnClicked("invoice")' },
-      { btnClass: 'btn btn-default', icon: 'fas fa-filter', action: 'DoToolActionBtnClicked("filter")' },
-      { btnClass: 'btn btn-default', icon: 'fas fa-plus', action: 'DoToolActionBtnClicked("add")' },
+      { btnClass: 'btn btn-default', icon: 'fas fa-search', action: 'searchTAClicked' }, 
+      { btnClass: 'btn btn-default', icon: 'fas fa-file-invoice', action: 'invoiceTAClicked' },
+      { btnClass: 'btn btn-default', icon: 'fas fa-filter', action: 'filterTAClicked' },
+      { btnClass: 'btn btn-default', icon: 'fas fa-plus', action: 'addTAClicked' },
     ];
     for (let index = 0; index < TA_CONST.length; index++) {
       let toolaction = TA_CONST[index]; 
@@ -76,6 +95,7 @@ export class StudentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.modalsService.register(this.modalsDialog);
     this.getStudent();
     this.getToolActions();
   }

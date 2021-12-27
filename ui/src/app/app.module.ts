@@ -17,6 +17,7 @@ import { ToolactionComponent } from './toolaction/toolaction.component';
 import { StudentComponent } from './student/student.component';
 import { StudentpaymentComponent } from './studentpayment/studentpayment.component';
 import { BtnEventEmitterService } from './btn-event-emitter.service';
+import { ModalsComponent } from './modals/modals.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { BtnEventEmitterService } from './btn-event-emitter.service';
     ToolactionComponent,
     StudentComponent,
     StudentpaymentComponent,
+    ModalsComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { BtnEventEmitterService } from './btn-event-emitter.service';
     AppRoutingModule
   ],
   providers: [
-    BtnEventEmitterService
+    BtnEventEmitterService,
+    ModalsComponent
   ],
   bootstrap: [AppComponent]
 })
