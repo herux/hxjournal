@@ -3,8 +3,7 @@ Web base Accounting Journal, using 4 different type of programming language as w
 - freepascal
 - golang
 - java
-- nodejs
-and angular10 as front end. 
+- angular10 as front end. 
 
 # FEATURE 
 - Journal
