@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Inject } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Inject, Input } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -9,6 +9,8 @@ import { DOCUMENT } from '@angular/common';
 export class ModalsComponent implements OnInit {
 
   @Output() onOk: EventEmitter<any> = new EventEmitter();
+  @Input() title: string;
+  @Input() content: any;
   onCancel: EventEmitter<any> = new EventEmitter();
   style: any;
 
@@ -34,6 +36,7 @@ export class ModalsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
 }
