@@ -33,14 +33,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
   }
 
   searchTAClicked() {
-    this.modalsService
-      .show()
-      .then((res) => {
-        console.warn('ok clicked');
-      })
-      .catch((err) => {
-        console.warn('rejected');
-      });
+    
   }
 
   invoiceTAClicked() {
@@ -52,8 +45,14 @@ export class StudentComponent implements OnInit, AfterViewInit {
   }
 
   addTAClicked() {
-    console.log('addTAClicked');
-    // this.modals.open();
+    this.modalsService
+      .show()
+      .then((res) => {
+        console.warn('ok clicked');
+      })
+      .catch((err) => {
+        console.warn('rejected');
+      });
   }
 
   getStudent() {
