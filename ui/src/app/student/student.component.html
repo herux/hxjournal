@@ -1,12 +1,5 @@
 <hxtable title="Students" [data]="students" [toolactions]="toolactions"></hxtable>
 <hxmodals #hxmodals title="Student Dialogs">
-        birthdate: req.body.birthdate,
-        gender: req.body.gender,
-        religion: req.body.religion,
-        parentname: req.body.parentname,
-        parentaddress: req.body.parentaddress,
-        parentphone: req.body.parentphone,
-        parentjob: req.body.parentjob,
     <form>
         <div class="card-body">
           <div class="form-group">
@@ -27,7 +20,37 @@
           </div>
           <div class="form-group">
             <label for="birthdate">Birthdate</label>
-            <input type="date" class="form-control" id="birthdate" placeholder="Birthdate">
+            <input type="date" class="form-control" id="birthdate" placeholder="Birthdate" >
+          </div>
+          <div class="form-group clearfix">
+            <div class="icheck-primary d-inline">
+              <input type="radio" id="radioPrimary1" name="r1" checked>
+              <label for="radioPrimary1">
+                Male
+              </label>
+            </div>
+            <div class="icheck-primary d-inline">
+              <input type="radio" id="radioPrimary2" name="r1">
+              <label for="radioPrimary2">
+                Female
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Religion</label>
+            <select class="form-control select2" style="width: 100%;">
+              <option selected="selected">Islam</option>
+              <option>Islam</option>
+              <option>Kristen</option>
+              <option>Katolik</option>
+              <option>Hindu</option>
+              <option>Budha</option>
+              <option>Konghucu</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="parentname">Parent Name</label>
+            <input type="text" class="form-control" id="parentname" placeholder="Enter your parentname">
           </div>
         </div>
     </form>
