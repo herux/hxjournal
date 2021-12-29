@@ -18,6 +18,7 @@ import { ModalsService } from '../modals/modals.service';
 export class StudentComponent implements OnInit, AfterViewInit {
   students: Student[];
   toolactions: Toolaction[] = [];
+  contentModals: string;
   private _serviceSubscription : any;
   @ViewChild('hxmodals') 
   private modalsDialog: ModalsComponent;
@@ -96,6 +97,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.modalsService.register(this.modalsDialog);
+    this.contentModals = 'test';
   }
 
   ngOnInit(): void {
