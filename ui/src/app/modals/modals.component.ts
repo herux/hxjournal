@@ -25,7 +25,6 @@ export class ModalsComponent implements OnInit {
   }
 
   show() {
-    console.log('component show');
     this.document.body.classList.add('modal-open');
     this.style = { 'display': 'block' };
   }
