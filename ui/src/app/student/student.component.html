@@ -1,58 +1,56 @@
 <hxtable title="Students" [data]="students" [toolactions]="toolactions"></hxtable>
 <hxmodals #hxmodals title="Student Dialogs">
-    <form>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="Fullname">Fullname</label>
-            <input type="text" class="form-control" id="Fullname" placeholder="Enter your Fullname">
-          </div>
-          <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" class="form-control" id="address" placeholder="Address">
-          </div>
-          <div class="form-group">
-            <label for="telephone">Telephone</label>
-            <input type="text" class="form-control" id="telephone" placeholder="Telephone">
-          </div>
-          <div class="form-group">
-            <label for="birthplace">Birthplace</label>
-            <input type="text" class="form-control" id="birthplace" placeholder="Birthplace">
-          </div>
-          <div class="form-group">
-            <label for="birthdate">Birthdate</label>
-            <input type="date" class="form-control" id="birthdate" placeholder="Birthdate" >
-          </div>
-          <div class="form-group clearfix">
-            <div class="icheck-primary d-inline">
-              <input type="radio" id="radioPrimary1" name="r1" checked>
-              <label for="radioPrimary1">
-                Male
-              </label>
-            </div>
-            <div class="icheck-primary d-inline">
-              <input type="radio" id="radioPrimary2" name="r1">
-              <label for="radioPrimary2">
-                Female
-              </label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Religion</label>
-            <select class="form-control select2" style="width: 100%;">
-              <option selected="selected">Islam</option>
-              <option>Islam</option>
-              <option>Kristen</option>
-              <option>Katolik</option>
-              <option>Hindu</option>
-              <option>Budha</option>
-              <option>Konghucu</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="parentname">Parent Name</label>
-            <input type="text" class="form-control" id="parentname" placeholder="Enter your parentname">
-          </div>
+    <div class="card-body">
+        <div class="form-group">
+        <label for="Fullname">Fullname</label>
+        <input type="text" [formControl]='modalsForm' class="form-control" id="Fullname" placeholder="Enter your Fullname">
         </div>
-    </form>
+        <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" [formControl]='modalsForm' class="form-control" id="address" placeholder="Address">
+        </div>
+        <div class="form-group">
+        <label for="telephone">Telephone</label>
+        <input type="text" [formControl]='modalsForm' class="form-control" id="telephone" placeholder="Telephone">
+        </div>
+        <div class="form-group">
+        <label for="birthplace">Birthplace</label>
+        <input type="text" [formControl]='modalsForm' class="form-control" id="birthplace" placeholder="Birthplace">
+        </div>
+        <div class="form-group">
+        <label for="birthdate">Birthdate</label>
+        <input type="date" [formControl]='modalsForm' class="form-control" id="birthdate" placeholder="Birthdate" >
+        </div>
+        <div class="form-group clearfix">
+        <div class="icheck-primary d-inline">
+            <input type="radio" [formControl]='modalsForm' id="radioPrimary1" name="r1" checked>
+            <label for="radioPrimary1">
+            Male
+            </label>
+        </div>
+        <div class="icheck-primary d-inline">
+            <input type="radio" [formControl]='modalsForm' id="radioPrimary2" name="r1">
+            <label for="radioPrimary2">
+            Female
+            </label>
+        </div>
+        </div>
+        <div class="form-group">
+        <label>Religion</label>
+        <select class="form-control select2" [formControl]='modalsForm' style="width: 100%;">
+            <option selected="selected">Islam</option>
+            <option>Islam</option>
+            <option>Kristen</option>
+            <option>Katolik</option>
+            <option>Hindu</option>
+            <option>Budha</option>
+            <option>Konghucu</option>
+        </select>
+        </div>
+        <div class="form-group">
+        <label for="parentname">Parent Name</label>
+        <input type="text" [formControl]='modalsForm' class="form-control" id="parentname" placeholder="Enter your parentname">
+        </div>
+    </div>
 </hxmodals>
 

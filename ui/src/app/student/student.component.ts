@@ -9,6 +9,7 @@ import { BtnEventEmitterService } from '../btn-event-emitter.service';
 import { ToolactionServiceEvent } from '../toolaction-service-event';
 import { ModalsComponent } from '../modals/modals.component'; 
 import { ModalsService } from '../modals/modals.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-student',
@@ -22,6 +23,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
   private _serviceSubscription : any;
   @ViewChild('hxmodals') 
   private modalsDialog: ModalsComponent;
+  modalsForm = new FormControl('');
 
   constructor(private http:HttpClient, private configService: ConfigService, 
     private utilsService: UtilsService, private btnEmitter: BtnEventEmitterService,
@@ -49,7 +51,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
     this.modalsService
       .show()
       .then((res) => {
-        console.warn('ok clicked');
+        console.warn('ok clicked ', this.modalsForm);
       })
       .catch((err) => {
         console.warn('rejected');
