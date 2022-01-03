@@ -9,7 +9,7 @@ import { BtnEventEmitterService } from '../btn-event-emitter.service';
 import { ToolactionServiceEvent } from '../toolaction-service-event';
 import { ModalsComponent } from '../modals/modals.component'; 
 import { ModalsService } from '../modals/modals.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-student',
@@ -23,7 +23,14 @@ export class StudentComponent implements OnInit, AfterViewInit {
   private _serviceSubscription : any;
   @ViewChild('hxmodals') 
   private modalsDialog: ModalsComponent;
-  modalsForm = new FormControl('');
+  modalsFormGroup = new FormGroup({
+    fullname: new FormControl(''),
+    address: new FormControl(''),
+    telephone: new FormControl(''),
+    birthplace: new FormControl(''),
+    birthdate: new FormControl(''),
+  });
+  
 
   constructor(private http:HttpClient, private configService: ConfigService, 
     private utilsService: UtilsService, private btnEmitter: BtnEventEmitterService,
@@ -50,8 +57,8 @@ export class StudentComponent implements OnInit, AfterViewInit {
   addTAClicked() {
     this.modalsService
       .show()
-      .then((res) => {
-        console.warn('ok clicked ', this.modalsForm);
+      .then(() => {
+        console.warn('ok clicked ', this.modalsFormGroup);
       })
       .catch((err) => {
         console.warn('rejected');
