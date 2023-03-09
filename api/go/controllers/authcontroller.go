@@ -11,10 +11,10 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-//AuthController is for auth logic
+// AuthController is for auth logic
 type AuthController struct{}
 
-//Login is to process login request
+// Login is to process login request
 func (auth *AuthController) Login(c *gin.Context) {
 
 	var loginInfo entity.User
@@ -48,7 +48,7 @@ func (auth *AuthController) Login(c *gin.Context) {
 	})
 }
 
-//Profile is to provide current user info
+// Profile is to provide current user info
 func (auth *AuthController) Profile(c *gin.Context) {
 	user := c.MustGet("user").(*(entity.User))
 
@@ -58,9 +58,8 @@ func (auth *AuthController) Profile(c *gin.Context) {
 	})
 }
 
-//Signup is for user signup
+// Signup is for user signup
 func (auth *AuthController) Signup(c *gin.Context) {
-
 	type signupInfo struct {
 		Email    string `json:"email" binding:"required"`
 		Password string `json:"password" binding:"required"`
@@ -78,10 +77,11 @@ func (auth *AuthController) Signup(c *gin.Context) {
 		log.Fatal(err)
 		return
 	}
-
 	user.Password = string(hash)
 	user.Name = info.Name
-	userservice := service.Userservice{}
+	userservice := service.Userservice{
+		BaseService: *service.InitService(),
+	}
 	err = userservice.Create(&user)
 	if err != nil {
 		c.JSON(500, gin.H{"error": err.Error()})

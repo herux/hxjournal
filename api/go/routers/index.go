@@ -9,8 +9,8 @@ import (
 
 func setAuthRoute(router *gin.Engine) {
 	authController := new(controllers.AuthController)
-	router.POST("/login", authController.Login)
-	router.POST("/signup", authController.Signup)
+	router.POST("/users/login", authController.Login)
+	router.POST("/users/signup", authController.Signup)
 	authGroup := router.Group("/")
 	// authGroup.Use(middlewares.Authentication())
 	authGroup.GET("/profile", authController.Profile)
