@@ -8,14 +8,14 @@ import (
 )
 
 type BaseService struct {
-	mongoDbConn    *mogo.Connection
-	postgresDbConn *gorm.DB
+	mongoDb    *mogo.Connection
+	postgresDb *gorm.DB
 }
 
 func InitService() *BaseService {
-	postgresDbConn := db.GetPSQLConnection()
+	postgresDb := db.GetPSQLConnection()
 
 	return &BaseService{
-		postgresDbConn: postgresDbConn,
+		postgresDb: postgresDb,
 	}
 }
