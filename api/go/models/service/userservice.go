@@ -14,13 +14,13 @@ type Userservice struct {
 // Create is to register new user
 func (userservice *Userservice) Create(user *(entity.User)) error {
 	fmt.Println("user: ", user, userservice)
-	result := userservice.postgresDbConn.Where("email = ?", user.Email).Find(user)
+	result := userservice.postgresDb.Where("email = ?", user.Email).Find(user)
 	fmt.Println("result: ", result)
 	if result.RowsAffected > 0 {
 		return errors.New("email already Exist")
 	}
 
-	result = userservice.postgresDbConn.Create(&user)
+	result = userservice.postgresDb.Create(&user)
 	if result.RowsAffected != 1 {
 		return errors.New(result.Error.Error())
 	}
