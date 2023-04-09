@@ -11,7 +11,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//Authentication is for auth middleware
+// Authentication is for auth middleware
 func Authentication() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.Request.Header.Get("Authentication")
@@ -45,7 +45,7 @@ func Authentication() gin.HandlerFunc {
 		if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
 			email := claims["email"].(string)
 			fmt.Println("email is ", email)
-			userservice := service.Userservice{}
+			userservice := service.UserService{}
 			user, err := userservice.FindByEmail(email)
 			if err != nil {
 				c.JSON(402, gin.H{
@@ -63,7 +63,7 @@ func Authentication() gin.HandlerFunc {
 	}
 }
 
-//ErrorHandler is for global error
+// ErrorHandler is for global error
 func ErrorHandler(c *gin.Context) {
 	c.Next()
 	if len(c.Errors) > 0 {

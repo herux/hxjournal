@@ -6,6 +6,7 @@ import (
 	"hxjournal/api/models/entity"
 )
 
+// create the databases from model
 func ExecMigrate() {
 	db := db.GetPSQLConnection()
 	err := db.AutoMigrate(&entity.User{},
@@ -14,7 +15,9 @@ func ExecMigrate() {
 		&entity.JournalDetail{},
 		&entity.CoaType{},
 		&entity.Major{},
-		&entity.Student{})
+		&entity.Student{},
+		&entity.StudentMajor{},
+		&entity.StudentMajorPayment{})
 	if err != nil {
 		errors.New(err.Error())
 	}
