@@ -6,3 +6,11 @@ type Major struct {
 	Cost  float64
 	Count int
 }
+
+func (m *Major) Create() {
+
+}
+
+// func (m *Major) Find() []Major {
+
+// }

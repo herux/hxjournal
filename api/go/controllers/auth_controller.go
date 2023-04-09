@@ -12,7 +12,16 @@ import (
 )
 
 // AuthController is for auth logic
-type AuthController struct{}
+type AuthController struct {
+	BaseController
+}
+
+func (auth *AuthController) Handle(router *gin.Engine) {
+	authGroup := router.Group("/users")
+	authGroup.POST("/login", auth.Login)
+	authGroup.POST("/signup", auth.Signup)
+	authGroup.GET("/profile", auth.Profile)
+}
 
 // Login is to process login request
 func (auth *AuthController) Login(c *gin.Context) {
@@ -23,7 +32,7 @@ func (auth *AuthController) Login(c *gin.Context) {
 		return
 	}
 	//TODO
-	userservice := service.Userservice{}
+	userservice := service.UserService{}
 	user, errf := userservice.Find(&loginInfo)
 	if errf != nil {
 		c.JSON(401, gin.H{"error": "Not found"})
@@ -79,14 +88,13 @@ func (auth *AuthController) Signup(c *gin.Context) {
 	}
 	user.Password = string(hash)
 	user.Name = info.Name
-	userservice := service.Userservice{
-		BaseService: *service.InitService(),
-	}
-	err = userservice.Create(&user)
+	// userservice := service.UserService{
+	// 	BaseService: *service.InitService(),
+	// }
+	// err = userservice.Create(&user)
 	if err != nil {
 		c.JSON(500, gin.H{"error": err.Error()})
-	} else {
-		c.JSON(200, gin.H{"result": "ok"})
+		return
 	}
-	return
+	c.JSON(200, gin.H{"result": "ok"})
 }
