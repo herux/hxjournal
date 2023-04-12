@@ -10,6 +10,10 @@ type BaseController struct {
 	Svc *service.BaseService
 }
 
+func (*BaseController) Response(data interface{}, code int, result bool, message string, ctx *gin.Context) {
+	ctx.JSON(code, gin.H{"m": message, "r": result, "d": data})
+}
+
 var Controller controller
 
 type handlerController interface {

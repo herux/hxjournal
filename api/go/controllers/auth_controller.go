@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"hxjournal/api/models/entity"
 	"hxjournal/api/models/service"
 	"log"
@@ -28,33 +27,32 @@ func (auth *AuthController) Login(c *gin.Context) {
 
 	var loginInfo entity.User
 	if err := c.ShouldBindJSON(&loginInfo); err != nil {
-		c.JSON(400, gin.H{"error": err.Error()})
+		auth.Response(nil, 400, false, err.Error(), c)
 		return
 	}
 	//TODO
 	userservice := service.UserService{}
 	user, errf := userservice.Find(&loginInfo)
 	if errf != nil {
-		c.JSON(401, gin.H{"error": "Not found"})
+		auth.Response(nil, 400, false, "Not found", c)
 		return
 	}
 
 	err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(loginInfo.Password))
 	if err != nil {
-		c.JSON(402, gin.H{"error": "Email or password is invalid."})
+		auth.Response(nil, 402, false, "Email or password is invalid.", c)
 		return
 	}
 
-	fmt.Println("user email is ", user.Email)
 	token, err := user.GetJwtToken()
 	if err != nil {
-		c.JSON(500, gin.H{"error": err.Error()})
+		auth.Response(nil, 500, false, err.Error(), c)
 		return
 	}
-	//-------
-	c.JSON(200, gin.H{
+
+	auth.Response(gin.H{
 		"token": token,
-	})
+	}, 200, false, "success", c)
 }
 
 // Profile is to provide current user info

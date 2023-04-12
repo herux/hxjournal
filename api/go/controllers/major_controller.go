@@ -22,8 +22,8 @@ func (c *MajorController) List(ctx *gin.Context) {
 	pagination := utils.InitPagination(ctx)
 	result, err := majorService.List(*pagination)
 	if err != nil {
-		ctx.JSON(500, gin.H{"error": err.Error()})
+		c.Response(nil, 500, false, err.Error(), ctx)
 		return
 	}
-	ctx.JSON(200, result)
+	c.Response(result, 200, true, "success", ctx)
 }
