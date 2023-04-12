@@ -1,5 +1,6 @@
 {
-    "coaDataUrl": "http://localhost:3030/apis/v1/coa",
-    "studentDataUrl":"http://localhost:3030/apis/v1/student",
-    "journalDataUrl": "http://localhost:3030/apis/v1/journal"
-  }
+  "host":"http://localhost:8080",
+  "coaDataUrl": "/coa",
+  "studentDataUrl":"/student",
+  "journalDataUrl": "/journal"
+}

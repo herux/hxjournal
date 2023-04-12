@@ -70,21 +70,11 @@ export class StudentComponent implements OnInit, AfterViewInit {
       this.http.get<Student[]>(url)
         .subscribe((studentData: any) => {
           if (studentData.r) {
-            // this.utilsService.renamePropArray(coa.d, 'coa_category', 'category');
-            // this.utilsService.renamePropArray(coa.d, 'coa_dk', 'dk');
-            // this.utilsService.renamePropArray(coa.d, 'coa_gd', 'gd');
-            // this.utilsService.renamePropArray(coa.d, 'coa_gen', 'gen');
-            // this.utilsService.renamePropArray(coa.d, 'coa_level', 'level');
-            // this.utilsService.renamePropArray(coa.d, 'coa_md', 'md');
-            // this.utilsService.renamePropArray(coa.d, 'coa_mk', 'mk');
-            // this.utilsService.renamePropArray(coa.d, 'coa_no', 'coa number');
-            // this.utilsService.renamePropArray(coa.d, 'coa_sad', 'sad');
-            // this.utilsService.renamePropArray(coa.d, 'coa_sak', 'sak');
-            // this.utilsService.renamePropArray(coa.d, 'coa_wno', 'coa parent');
+            console.log("studentData:", studentData.d.rows)
             // this.utilsService.renamePropArray(coa.d, 'createdat', 'created at');
-            // this.utilsService.removePropExceptsArray(coa.d, 
-            //   ['category', 'dk', 'gd', 'gen', 'level', 'md', 'mk', 'coa number', 'sad', 'sak', 'coa parent', 'created at']);
-            this.students = studentData.d;
+            this.students = studentData.d.rows;
+            this.utilsService.removePropExceptsArray(this.students, 
+              ['Fullname', 'Birthdate', 'Birthplace', 'Gender', 'Parentname']);
           }
         });
     });

@@ -28,7 +28,7 @@ export class ConfigService {
   getStudentApiUrl(callback) {
     this.getConfig()
       .subscribe((data: Config) => {
-        callback(data.studentDataUrl);
+        callback(data.host + data.studentDataUrl + "/list");
       });
   }
 
