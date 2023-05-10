@@ -23,6 +23,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
   pagination: Pagination;
   toolactions: Toolaction[] = [];
   contentModals: string;
+  fields: string[];
   private _serviceSubscription : any;
   @ViewChild('hxmodals') 
   private modalsDialog: ModalsComponent;
@@ -97,12 +98,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    // this.configService.getStudentApiUrl((url) => {
-    //   this.apiUrl = url
-    //   console.log("url", this.apiUrl)
-    // });
-    // let url = await this.getStudent()
-    // console.log("url", url)
+    this.fields = ['Fullname', 'Birthdate', 'Birthplace', 'Gender', 'Parentname'];
     this.apiUrl = "http://localhost:8080/student/list";
     this.getToolActions();
   }

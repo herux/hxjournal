@@ -16,7 +16,6 @@ export class UtilsService {
     public removePropExceptsArrayByOrder(objects: any = [], exceptProps: any = []) {
       for (let i = 0; i < objects.length; i++) {
         this.removePropExcepts(objects[i], exceptProps);
-        console.log('--> ',objects[i])
       }
   }
 
@@ -27,16 +26,11 @@ export class UtilsService {
     }
 
     public removePropExcepts(object: any, exceptProps: any = []) {
-      // let newObject = {}
       for (var k in object) {
         if (object.hasOwnProperty(k) && !exceptProps.includes(k)) {
           delete object[k];
         }
-        // if (exceptProps.includes(k)) {
-        //   newObject[k] = object[k]
-        // }
       }
-      // object = newObject    
     }
 
     public orderProps(object: any, props: any = []): any {

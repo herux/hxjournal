@@ -19,6 +19,8 @@ import { StudentComponent } from './student/student.component';
 import { StudentpaymentComponent } from './studentpayment/studentpayment.component';
 import { BtnEventEmitterService } from './btn-event-emitter.service';
 import { SharedModule } from './shared/shared.module';
+import { DatefieldPipe } from './datefield.pipe';
+import { GenderfieldPipe } from './genderfield.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { SharedModule } from './shared/shared.module';
     CoaComponent,
     ToolactionComponent,
     StudentComponent,
-    StudentpaymentComponent
+    StudentpaymentComponent,
+    DatefieldPipe,
+    GenderfieldPipe
   ],
   imports: [
     BrowserModule,

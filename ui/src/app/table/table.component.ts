@@ -19,8 +19,10 @@ export class TableComponent implements OnInit {
   @Input() toolactions: Toolaction[]
   @Input() apiUrl: string
   @Input() refreshFunc: (args: any) => void;
+  @Input() fields: string[]
 
   datas: any[];
+  currentPage: number = 0;
 
   constructor(private btnEventEmitterService: BtnEventEmitterService, private http:HttpClient, 
     private configService: ConfigService, private utilsService: UtilsService) {}
@@ -33,21 +35,37 @@ export class TableComponent implements OnInit {
     return 0;
   }
 
+  paginationNext() {
+    this.currentPage= this.currentPage + 1
+    this.getData("?limit=10&page=" + (this.currentPage + 1))
+  }
+
+  paginationPrevious() {
+    this.currentPage= this.currentPage - 1
+    this.getData("?limit=10&page=" + (this.currentPage - 1))
+  }
+
+  btnEnabled() {
+    if (this.currentPage == 0 ) {
+      return 'disabled'
+    }
+    return '';
+  }
+
   getData(query) {
       this.http.get<any[]>(this.apiUrl + query)
         .subscribe((responseData: any) => {
           if (responseData.r) {
             this.data = responseData.d.rows;
             this.pagination = responseData.d;
-            this.utilsService.removePropExceptsArrayByOrder(this.data, 
-              ['Fullname', 'Birthdate', 'Birthplace', 'Gender', 'Parentname']);
+            this.utilsService.removePropExceptsArrayByOrder(this.data, this.fields);
           }
         });
     return null;
   }
 
   ngOnInit(): void {
-    this.getData("?limit=100&page=1")
+    this.getData("?limit=10&page="+this.currentPage)
   }
 
   
