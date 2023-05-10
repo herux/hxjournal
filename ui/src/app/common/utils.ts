@@ -9,24 +9,38 @@ export class UtilsService {
   
     public removePropExceptsArray(objects: any = [], exceptProps: any = []) {
         for (let i = 0; i < objects.length; i++) {
-          const object = objects[i];
-          this.removePropExcepts(object, exceptProps);
+          this.removePropExcepts(objects[i], exceptProps);
         }
-    }    
+    }
+    
+    public removePropExceptsArrayByOrder(objects: any = [], exceptProps: any = []) {
+      for (let i = 0; i < objects.length; i++) {
+        this.removePropExcepts(objects[i], exceptProps);
+        console.log('--> ',objects[i])
+      }
+  }
 
     public renamePropArray(objects: any = [], from: string, to: string) {
         for (let i = 0; i < objects.length; i++) {
-          const object = objects[i];
-          this.renameProp(object, from, to);
+          this.renameProp(objects[i], from, to);
         }
     }
 
     public removePropExcepts(object: any, exceptProps: any = []) {
-        for (var k in object) {
-          if (object.hasOwnProperty(k) && !exceptProps.includes(k)) {
-            delete object[k];
-          }
+      // let newObject = {}
+      for (var k in object) {
+        if (object.hasOwnProperty(k) && !exceptProps.includes(k)) {
+          delete object[k];
         }
+        // if (exceptProps.includes(k)) {
+        //   newObject[k] = object[k]
+        // }
+      }
+      // object = newObject    
+    }
+
+    public orderProps(object: any, props: any = []): any {
+      let newObject = {}
     }
 
     public lowerPropValue(object: any) {

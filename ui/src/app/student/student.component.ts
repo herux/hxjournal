@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
 import { Student } from '../models/student';
+import { Pagination } from '../models/pagination';
 import { ConfigService } from '../config/config.service';
 import { Toolaction } from '../models/toolaction';
 import { UtilsService } from '../common/utils';
@@ -18,6 +19,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class StudentComponent implements OnInit, AfterViewInit {
   students: Student[];
+  apiUrl: string;
+  pagination: Pagination;
   toolactions: Toolaction[] = [];
   contentModals: string;
   private _serviceSubscription : any;
@@ -29,6 +32,10 @@ export class StudentComponent implements OnInit, AfterViewInit {
     telephone: new FormControl(''),
     birthplace: new FormControl(''),
     birthdate: new FormControl(''),
+    religion: new FormControl(''),
+    parentname: new FormControl(''),
+    parentaddress: new FormControl(''),
+    parentphone: new FormControl(''),
   });
   
 
@@ -65,21 +72,11 @@ export class StudentComponent implements OnInit, AfterViewInit {
       });
   }
 
-  getStudent() {
-    this.configService.getStudentApiUrl((url) => {
-      this.http.get<Student[]>(url)
-        .subscribe((studentData: any) => {
-          if (studentData.r) {
-            console.log("studentData:", studentData.d.rows)
-            // this.utilsService.renamePropArray(coa.d, 'createdat', 'created at');
-            this.students = studentData.d.rows;
-            this.utilsService.removePropExceptsArray(this.students, 
-              ['Fullname', 'Birthdate', 'Birthplace', 'Gender', 'Parentname']);
-          }
-        });
-    });
-    return null;
-  }
+  // async getStudent() {
+  //   await this.configService.getStudentApiUrl((url) => {
+  //     return url;
+  //   });
+  // }
 
   getToolActions() {
     let TA_CONST = [
@@ -99,8 +96,14 @@ export class StudentComponent implements OnInit, AfterViewInit {
     this.contentModals = 'test';
   }
 
-  ngOnInit(): void {
-    this.getStudent();
+  ngOnInit() {
+    // this.configService.getStudentApiUrl((url) => {
+    //   this.apiUrl = url
+    //   console.log("url", this.apiUrl)
+    // });
+    // let url = await this.getStudent()
+    // console.log("url", url)
+    this.apiUrl = "http://localhost:8080/student/list";
     this.getToolActions();
   }
 

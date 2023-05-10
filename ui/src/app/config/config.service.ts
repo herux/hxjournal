@@ -10,12 +10,13 @@ import { _ParseAST } from '@angular/compiler';
   providedIn: 'root'
 })
 export class ConfigService {
-  configUrl = 'assets/config.json';
+  configFile = 'assets/config.json';
+  config: Config;
 
   constructor(private http: HttpClient) { }
 
   getConfig() {
-    return this.http.get<Config>(this.configUrl);
+    return this.http.get<Config>(this.configFile);
   }
 
   getCoaApiUrl(callback) {
@@ -25,10 +26,10 @@ export class ConfigService {
       });
   }
 
-  getStudentApiUrl(callback) {
+  getStudentApiUrl() {
     this.getConfig()
       .subscribe((data: Config) => {
-        callback(data.host + data.studentDataUrl + "/list");
+        // callback(data.host + data.studentDataUrl + "/list");
       });
   }
 

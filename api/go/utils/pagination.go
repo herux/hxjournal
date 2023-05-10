@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"math"
 	"strconv"
 
@@ -45,7 +44,6 @@ func (p *Pagination) GetSort() string {
 
 func Paginate(value interface{}, pagination *Pagination, db *gorm.DB) func(db *gorm.DB) *gorm.DB {
 	var totalRows int64
-	fmt.Println("db  ", db)
 	db.Model(value).Count(&totalRows)
 
 	pagination.TotalRows = totalRows
@@ -84,7 +82,10 @@ func InitPagination(c *gin.Context) *Pagination {
 		pageSize = 10
 	}
 
+	limit, _ := strconv.Atoi(c.Query("limit"))
+
 	return &Pagination{
+		Limit:      limit,
 		Page:       page,
 		Sort:       sort + sortWithDirection,
 		TotalPages: pageSize,
