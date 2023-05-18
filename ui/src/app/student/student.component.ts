@@ -73,12 +73,6 @@ export class StudentComponent implements OnInit, AfterViewInit {
       });
   }
 
-  // async getStudent() {
-  //   await this.configService.getStudentApiUrl((url) => {
-  //     return url;
-  //   });
-  // }
-
   getToolActions() {
     let TA_CONST = [
       { btnClass: 'btn btn-default', icon: 'fas fa-search', action: 'searchTAClicked' }, 
@@ -97,7 +91,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
     this.contentModals = 'test';
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.fields = ['Fullname', 'Birthdate', 'Birthplace', 'Gender', 'Parentname'];
     this.apiUrl = "http://localhost:8080/student/list";
     this.getToolActions();

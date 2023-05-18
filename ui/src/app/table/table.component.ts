@@ -23,6 +23,7 @@ export class TableComponent implements OnInit {
 
   datas: any[];
   currentPage: number = 0;
+  availablePaginationBtn: any[];
 
   constructor(private btnEventEmitterService: BtnEventEmitterService, private http:HttpClient, 
     private configService: ConfigService, private utilsService: UtilsService) {}
@@ -45,11 +46,17 @@ export class TableComponent implements OnInit {
     this.getData("?limit=10&page=" + (this.currentPage - 1))
   }
 
+  paginationNumber(i) {
+    this.currentPage= i;
+    this.getData("?limit=10&page=" + (i + 1))
+  }
+
   btnEnabled() {
-    if (this.currentPage == 0 ) {
-      return 'disabled'
-    }
-    return '';
+    return ((this.currentPage == 0) ? 'disabled':'')
+  }
+
+  btnActive(i) {
+    return ((this.currentPage == i) ? 'active':'')
   }
 
   getData(query) {
@@ -66,8 +73,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData("?limit=10&page="+this.currentPage)
+    this.availablePaginationBtn = []
   }
-
-  
 
 }

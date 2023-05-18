@@ -9,12 +9,7 @@ export class GenderfieldPipe implements PipeTransform {
     for (let i = 0; i < value.length; i++) {
       const element = value[i];
       if (element['key'] == args[0] ) {
-        if (element['value'] == 0) {
-          element['value'] = 'Laki-laki'
-        }else{
-          element['value'] = 'Perempuan'
-        }
-        
+        element['value'] = (( element['value'] == 0) ? 'Laki-laki' : 'Perempuan');
       }
     }
     return value;

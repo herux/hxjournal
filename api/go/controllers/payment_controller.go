@@ -1,6 +1,9 @@
 package controllers
 
 import (
+	"hxjournal/api/models/service"
+	"hxjournal/api/utils"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,13 +17,13 @@ func (c *PaymentController) Handle(router *gin.Engine) {
 }
 
 func (c *PaymentController) List(ctx *gin.Context) {
-	// studenPaymentService := service.StudentPaymentService{}
-	// studenPaymentService.PostgresDb = c.Svc.PostgresDb
-	// pagination := utils.InitPagination(ctx)
-	// result, err := studenPaymentService.List(*pagination)
-	// if err != nil {
-	// 	c.Response(nil, 500, false, err.Error(), ctx)
-	// 	return
-	// }
-	// c.Response(result, 200, true, "success", ctx)
+	studentPaymentService := service.StudentPaymentService{}
+	studentPaymentService.PostgresDb = c.Svc.PostgresDb
+	pagination := utils.InitPagination(ctx)
+	result, err := studentPaymentService.List(*pagination)
+	if err != nil {
+		c.Response(nil, 500, false, err.Error(), ctx)
+		return
+	}
+	c.Response(result, 200, true, "success", ctx)
 }
