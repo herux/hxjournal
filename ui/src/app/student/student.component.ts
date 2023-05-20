@@ -25,8 +25,10 @@ export class StudentComponent implements OnInit, AfterViewInit {
   contentModals: string;
   fields: string[];
   private _serviceSubscription : any;
+  
   @ViewChild('hxmodals') 
   private modalsDialog: ModalsComponent;
+  
   modalsFormGroup = new FormGroup({
     fullname: new FormControl(''),
     address: new FormControl(''),

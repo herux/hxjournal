@@ -1,1 +1,11 @@
-<hxtable title="Student Payments" [data]="studentPayments" [toolactions]="toolactions"></hxtable>
+<hxtable title="Student Payments" [data]="studentPayments" [pagination]="pagination" [toolactions]="toolactions" [apiUrl]="apiUrl" [fields]="fields"></hxtable>
+<hxmodals #hxmodals title="Student Payment Dialogs">
+    <div class="card-body">
+        <form [formGroup]="modalsFormGroup">
+            <div class="form-group">
+                <label for="Fullname">Fullname</label>
+                <input type="text" formControlName="fullname" class="form-control" id="Fullname" placeholder="Enter your Fullname">
+            </div>
+        </form>
+    </div>
+</hxmodals>
