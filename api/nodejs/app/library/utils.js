@@ -1,15 +1,21 @@
 let setResponse = (res, success, error, data) => {
+    let adata = {
+        data,
+        pagination: {
+
+        }
+    }
     if (success) {
         res.json({
             r: success,
             m: 'success',
-            d: data
+            d: adata
         });
     }else {
         res.json({
             r: false,
             m: error,
-            d: data
+            d: adata
         });
     }
 }

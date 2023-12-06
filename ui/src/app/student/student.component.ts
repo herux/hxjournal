@@ -95,7 +95,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.fields = ['Fullname', 'Birthdate', 'Birthplace', 'Gender', 'Parentname'];
-    this.apiUrl = "http://localhost:8080/student/list";
+    this.apiUrl = "http://localhost:3030/student/list";
     this.getToolActions();
   }
 

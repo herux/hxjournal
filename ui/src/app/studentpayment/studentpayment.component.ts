@@ -72,7 +72,7 @@ export class StudentpaymentComponent implements OnInit {
 
   ngOnInit(): void {
     // this.fields = ['Fullname', 'Birthdate', 'Birthplace', 'Gender', 'Parentname'];
-    this.apiUrl = "http://localhost:8080/payment/list";
+    this.apiUrl = "http://localhost:3030/payment/list";
     this.getToolActions();
   }
 

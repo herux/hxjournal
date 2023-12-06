@@ -33,7 +33,7 @@ export class JournalComponent implements OnInit {
 
   ngOnInit(): void {
     // this.fields = ['Fullname', 'Birthdate', 'Birthplace', 'Gender', 'Parentname'];
-    this.apiUrl = "http://localhost:8080/journal/list";
+    this.apiUrl = "http://localhost:3030/journal/list";
     this.getToolActions();
   }
 

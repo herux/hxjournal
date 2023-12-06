@@ -14,13 +14,13 @@ import { UtilsService } from '../common/utils';
 })
 export class TableComponent implements OnInit {
   @Input() title: string
-  @Input() data: any[]
   @Input() pagination: Pagination
   @Input() toolactions: Toolaction[]
-  @Input() apiUrl: string
+  @Input() apiUrl: any;
   @Input() refreshFunc: (args: any) => void;
   @Input() fields: string[]
 
+  data: any[];
   datas: any[];
   currentPage: number = 0;
   availablePaginationBtn: any[];
@@ -63,9 +63,10 @@ export class TableComponent implements OnInit {
       this.http.get<any[]>(this.apiUrl + query)
         .subscribe((responseData: any) => {
           if (responseData.r) {
-            this.data = responseData.d.rows;
-            this.pagination = responseData.d;
-            this.utilsService.removePropExceptsArrayByOrder(this.data, this.fields);
+            this.data = responseData.d.data;
+            console.log('data: ', this.data);
+            this.pagination = responseData.d.pagination;
+            // this.utilsService.removePropExceptsArrayByOrder(this.data, this.fields);
           }
         });
     return null;
@@ -73,7 +74,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData("?limit=10&page="+this.currentPage)
-    this.availablePaginationBtn = []
+    this.availablePaginationBtn = [];
   }
 
 }

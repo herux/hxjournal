@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Config } from '../models/config';
 import { _ParseAST } from '@angular/compiler';
+import * as configData from '../../assets/config.json';
 
 
 @Injectable({
@@ -19,18 +20,12 @@ export class ConfigService {
     return this.http.get<Config>(this.configFile);
   }
 
-  getCoaApiUrl(callback) {
-    this.getConfig()
-      .subscribe((data: Config) => {
-        callback(data.coaDataUrl);
-      });
+  getCoaApiUrl() {
+    return configData.host + configData.coaDataUrl;
   }
 
   getStudentApiUrl() {
-    this.getConfig()
-      .subscribe((data: Config) => {
-        // callback(data.host + data.studentDataUrl + "/list");
-      });
+    return configData.host + configData.studentDataUrl;
   }
 
 }

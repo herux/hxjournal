@@ -8,11 +8,10 @@ router.get('/', (req, res, next) => {
     let query = req.query;
     Coa
 	    .find(query)
-		// .limit(parseInt(query.limit))
-		// .sort(query.order)
-		// .skip(parseInt(query.page) - 1)
+		.limit(parseInt(query.limit))
+		.sort(query.order)
+		.skip(parseInt(query.page))
 	    .exec(function (err, coas) {
-			console.log('coas: ', coas, err);
 		    if (err) 
 				return Utils.setResponse(res, false, err, {});
 		    
@@ -21,7 +20,6 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-	console.log(req.body);
 	let newCoa = new Coa({
 		coa_gen : req.body.coa_gen,
 		name : req.body.name,
