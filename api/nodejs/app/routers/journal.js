@@ -1,17 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var Journal = require('../models/journal');
+var Utils = require('../library/utils');
 
 router.get('/', (req, res, next) => {
     let query = req.query;
     Journal
 	    .find(query)
-		// .limit(parseInt(query.limit))
-		// .sort(query.order)
-		// .skip(parseInt(query.page) - 1)
-	    .exec(function (err, coas) {
-		    if (err) return next(err);
-		    res.json(coas);
+		.limit(parseInt(query.limit))
+		.sort(query.order)
+		.skip(parseInt(query.page))
+	    .exec(function (err, journals) {
+		    if (err) 
+				return Utils.setResponse(res, false, err, {});
+
+			Utils.setResponse(res, true, err, journals)
 	});
 });
 

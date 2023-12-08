@@ -45,6 +45,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
   constructor(private http:HttpClient, private configService: ConfigService, 
     private utilsService: UtilsService, private btnEmitter: BtnEventEmitterService,
     private modalsService: ModalsService) {
+      this.apiUrl = this.configService.getStudentApiUrl();
       this._serviceSubscription = this.btnEmitter.onToolActionBtnClick.subscribe({
         next: (event: ToolactionServiceEvent) => {
           this[event.action]();
@@ -95,7 +96,6 @@ export class StudentComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.fields = ['Fullname', 'Birthdate', 'Birthplace', 'Gender', 'Parentname'];
-    this.apiUrl = "http://localhost:3030/student/list";
     this.getToolActions();
   }
 
