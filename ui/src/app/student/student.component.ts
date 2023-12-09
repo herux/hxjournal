@@ -20,7 +20,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class StudentComponent implements OnInit, AfterViewInit {
   students: Student[];
   apiUrl: string;
-  pagination: Pagination;
+  // pagination: Pagination;
   toolactions: Toolaction[] = [];
   contentModals: string;
   fields: string[];

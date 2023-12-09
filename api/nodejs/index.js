@@ -26,4 +26,4 @@ app.use(function (req, res, next) {
 
 var httpPort = process.env.PORT || 3030;
 app.listen(httpPort);
-console.log('Go to https://localhost:' + httpPort);
+console.log('⚡️ [server] server is running at https://localhost:' + httpPort);

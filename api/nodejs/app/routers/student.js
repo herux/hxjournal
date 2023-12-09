@@ -8,15 +8,24 @@ router.get('/', (req, res, next) => {
     let query = req.query;
     Student
 	    .find(query)
-		// .limit(parseInt(query.limit))
-		// .sort(query.order)
-		// .skip(parseInt(query.page) - 1)
-	    .exec(function (err, coas) {
-			console.log('coas: ', coas, err);
+		.limit(parseInt(query.limit))
+		.sort(query.order)
+		.skip(parseInt(query.page))
+	    .exec(function (err, data) {
 		    if (err) 
 				return Utils.setResponse(res, false, err, {});
 		    
-			Utils.setResponse(res, true, err, coas)
+			Student.count().exec((err, count) => {
+				let dataObj = {
+					data,
+					pagination: {
+						total_rows: count,
+						page: parseInt(query.page) + 1,
+						total_pages: count / query.limit
+					}
+				}
+				Utils.setResponse(res, true, err, dataObj)
+			})
 	});
 })
 

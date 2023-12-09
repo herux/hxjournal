@@ -64,7 +64,6 @@ export class TableComponent implements OnInit {
         .subscribe((responseData: any) => {
           if (responseData.r) {
             this.data = responseData.d.data;
-            console.log('data: ', this.data);
             this.pagination = responseData.d.pagination;
             // this.utilsService.removePropExceptsArrayByOrder(this.data, this.fields);
           }

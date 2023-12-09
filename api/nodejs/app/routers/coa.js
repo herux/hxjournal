@@ -11,11 +11,21 @@ router.get('/', (req, res, next) => {
 		.limit(parseInt(query.limit))
 		.sort(query.order)
 		.skip(parseInt(query.page))
-	    .exec(function (err, coas) {
+	    .exec(function (err, data) {
 		    if (err) 
 				return Utils.setResponse(res, false, err, {});
 		    
-			Utils.setResponse(res, true, err, coas)
+			Coa.count().exec((err, count) => {
+				let dataObj = {
+					data,
+					pagination: {
+						total_rows: count,
+						page: parseInt(query.page) + 1,
+						total_pages: count / query.limit
+					}
+				}
+				Utils.setResponse(res, true, err, dataObj)
+			})
 	});
 })
 
