@@ -65,6 +65,17 @@ export class StudentComponent implements OnInit, AfterViewInit {
 
   }
 
+  tableRowClicked() {
+    this.modalsService
+      .show()
+      .then(() => {
+
+      })
+      .catch((err) => {
+
+      });
+  }
+
   addTAClicked() {
     this.modalsService
       .show()
@@ -82,6 +93,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
       { btnClass: 'btn btn-default', icon: 'fas fa-file-invoice', action: 'invoiceTAClicked' },
       { btnClass: 'btn btn-default', icon: 'fas fa-filter', action: 'filterTAClicked' },
       { btnClass: 'btn btn-default', icon: 'fas fa-plus', action: 'addTAClicked' },
+      { btnClass: '', icon: '', action: 'tableRowClicked' },
     ];
     for (let index = 0; index < TA_CONST.length; index++) {
       let toolaction = TA_CONST[index]; 
