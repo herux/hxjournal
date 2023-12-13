@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Toolaction } from '../models/toolaction';
 import { BtnEventEmitterService } from '../btn-event-emitter.service'; 
 import { Pagination } from '../models/pagination';
@@ -19,6 +19,7 @@ export class TableComponent implements OnInit {
   @Input() apiUrl: any;
   @Input() refreshFunc: (args: any) => void;
   @Input() fields: string[]
+  @Output() rowClicked = new EventEmitter<any>();
 
   data: any[];
   datas: any[];
@@ -59,13 +60,17 @@ export class TableComponent implements OnInit {
     return ((this.currentPage == i) ? 'active':'')
   }
 
+  tableRowClicked(data: any) {
+    this.rowClicked.emit(data);
+  }
+
   getData(query) {
       this.http.get<any[]>(this.apiUrl + query)
         .subscribe((responseData: any) => {
           if (responseData.r) {
             this.data = responseData.d.data;
             this.pagination = responseData.d.pagination;
-            // this.utilsService.removePropExceptsArrayByOrder(this.data, this.fields);
+            this.utilsService.removePropExceptsArrayByOrder(this.data, this.fields);
           }
         });
     return null;

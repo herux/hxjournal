@@ -12,7 +12,6 @@ export class BtnEventEmitterService {
   constructor() { }
 
   DoToolActionBtnClicked(action: any) {
-    console.log('DoToolActionBtnClicked ', action);
     this.onToolActionBtnClick.emit({action: action});
   }
 

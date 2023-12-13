@@ -25,7 +25,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let row of data; let i = index" (click)="toolActionBtnClicked(toolactions[4].action)">
+            <tr *ngFor="let row of data; let i = index" (click)="tableRowClicked(row)">
               <td *ngFor="let column of row | keyvalue: unsorted | datefield: 'Birthdate' | genderfield: 'Gender'">
                 {{column.value}}
               </td>

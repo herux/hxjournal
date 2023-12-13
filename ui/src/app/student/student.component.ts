@@ -20,7 +20,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class StudentComponent implements OnInit, AfterViewInit {
   students: Student[];
   apiUrl: string;
-  // pagination: Pagination;
   toolactions: Toolaction[] = [];
   contentModals: string;
   fields: string[];
@@ -65,7 +64,19 @@ export class StudentComponent implements OnInit, AfterViewInit {
 
   }
 
-  tableRowClicked() {
+  tableRowClicked(event) {
+    console.log(event);
+    this.modalsFormGroup = new FormGroup({
+      fullname: new FormControl(event.FULLNAME),
+      address: new FormControl(event.ADDRESS),
+      telephone: new FormControl(event.TELEPHONE),
+      birthplace: new FormControl(event.BIRTHPLACE),
+      birthdate: new FormControl(event.BIRTHDATE),
+      religion: new FormControl(event.RELIGION),
+      parentname: new FormControl(event.PARENTNAME),
+      parentaddress: new FormControl(event.PARENTADDRESS),
+      parentphone: new FormControl(event.PARENTPHONE),
+    });
     this.modalsService
       .show()
       .then(() => {
@@ -93,7 +104,6 @@ export class StudentComponent implements OnInit, AfterViewInit {
       { btnClass: 'btn btn-default', icon: 'fas fa-file-invoice', action: 'invoiceTAClicked' },
       { btnClass: 'btn btn-default', icon: 'fas fa-filter', action: 'filterTAClicked' },
       { btnClass: 'btn btn-default', icon: 'fas fa-plus', action: 'addTAClicked' },
-      { btnClass: '', icon: '', action: 'tableRowClicked' },
     ];
     for (let index = 0; index < TA_CONST.length; index++) {
       let toolaction = TA_CONST[index]; 
@@ -103,11 +113,10 @@ export class StudentComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.modalsService.register(this.modalsDialog);
-    this.contentModals = 'test';
   }
 
   ngOnInit(): void {
-    this.fields = ['Fullname', 'Birthdate', 'Birthplace', 'Gender', 'Parentname'];
+    // this.fields = ['FULLNAME', 'BIRTHDATE', 'BIRTHPLACE', 'GENDER', 'PARENTNAME'];
     this.getToolActions();
   }
 

@@ -14,6 +14,10 @@ export class UtilsService {
     }
     
     public removePropExceptsArrayByOrder(objects: any = [], exceptProps: any = []) {
+      if (exceptProps.length == 0) {
+        return;
+      }
+
       for (let i = 0; i < objects.length; i++) {
         this.removePropExcepts(objects[i], exceptProps);
       }
