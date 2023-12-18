@@ -30,30 +30,53 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-	console.log(req.body);
-	let newStudent = new Student({
-		fullname: req.body.fullname,
-        address: req.body.address,
-        telephone: req.body.telephone,
-        birthplace: req.body.birthplace,
-        birthdate: req.body.birthdate,
-        gender: req.body.gender,
-        religion: req.body.religion,
-        parentname: req.body.parentname,
-        parentaddress: req.body.parentaddress,
-        parentphone: req.body.parentphone,
-        parentjob: req.body.parentjob,
-        picture: req.body.picture,
-        createdat: new Date,
-        updateat: new Date
-	})
+	if (req.body._id == null) { 
+		// new student
+		let newStudent = new Student({
+			FULLNAME: req.body.FULLNAME,
+			ADDRESS: req.body.ADDRESS,
+			TELEPHONE: req.body.TELEPHONE,
+			BIRTHPLACE: req.body.BIRTHPLACE,
+			BIRTHDATE: req.body.BIRTHDATE,
+			GENDER: req.body.GENDER,
+			RELIGION: req.body.RELIGION,
+			PARENTNAME: req.body.PARENTNAME,
+			PARENTADDRESS: req.body.PARENTADDRESS,
+			PARENTPHONE: req.body.PARENTPHONE,
+			PARENTJOB: req.body.PARENTJOB,
+		})
+		newStudent.CREATEDAT = new Date;
+		newStudent.UPDATEAT = new Date;
+		newStudent.save((err) => {
+			if (err) 
+				return Utils.setResponse(res, false, err, {});
+	
+			Utils.setResponse(res, true, err, newStudent);
+		});
+	} else {
+		// update student
+		let newStudentData = {};
+		newStudentData._id = req.body._id;
+		newStudentData.FULLNAME = req.body.FULLNAME;
+		newStudentData.ADDRESS = req.body.ADDRESS;
+		newStudentData.TELEPHONE = req.body.TELEPHONE;
+		newStudentData.BIRTHPLACE = req.body.BIRTHPLACE;
+		newStudentData.BIRTHDATE = req.body.BIRTHDATE;
+		newStudentData.GENDER = req.body.GENDER;
+		newStudentData.RELIGION = req.body.RELIGION;
+		newStudentData.PARENTNAME = req.body.PARENTNAME;
+		newStudentData.PARENTADDRESS = req.body.PARENTADDRESS;
+		newStudentData.PARENTPHONE = req.body.PARENTPHONE;
+		newStudentData.PARENTJOB = req.body.PARENTJOB;
+		newStudentData.UPDATEAT = new Date;
+		console.log('newStudentData: ', newStudentData);
+		Student.findByIdAndUpdate(newStudentData._id, newStudentData, (err, student) => {
+			if (err) 
+				return Utils.setResponse(res, false, err, {});
 
-	newStudent.save((err) => {
-		if (err) 
-			return Utils.setResponse(res, false, err, {});
-
-		Utils.setResponse(res, true, err, newStudent);
-	})
+			Utils.setResponse(res, true, err, student);	
+		})
+	}
 });
 
 module.exports = router;

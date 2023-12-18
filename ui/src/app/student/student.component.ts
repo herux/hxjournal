@@ -29,15 +29,15 @@ export class StudentComponent implements OnInit, AfterViewInit {
   private modalsDialog: ModalsComponent;
   
   modalsFormGroup = new FormGroup({
-    fullname: new FormControl(''),
-    address: new FormControl(''),
-    telephone: new FormControl(''),
-    birthplace: new FormControl(''),
-    birthdate: new FormControl(''),
-    religion: new FormControl(''),
-    parentname: new FormControl(''),
-    parentaddress: new FormControl(''),
-    parentphone: new FormControl(''),
+    FULLNAME: new FormControl(''),
+    ADDRESS: new FormControl(''),
+    TELEPHONE: new FormControl(''),
+    BIRTHPLACE: new FormControl(''),
+    BIRTHDATE: new FormControl(''),
+    RELIGION: new FormControl(''),
+    PARENTNAME: new FormControl(''),
+    PARENTADDRESS: new FormControl(''),
+    PARENTPHONE: new FormControl(''),
   });
   
 
@@ -64,26 +64,30 @@ export class StudentComponent implements OnInit, AfterViewInit {
 
   }
 
-  tableRowClicked(event) {
-    console.log(event);
+  tableRowClicked(event: any) {
+    console.log('tableRowClicked: ', event)
     this.modalsFormGroup = new FormGroup({
-      fullname: new FormControl(event.FULLNAME),
-      address: new FormControl(event.ADDRESS),
-      telephone: new FormControl(event.TELEPHONE),
-      birthplace: new FormControl(event.BIRTHPLACE),
-      birthdate: new FormControl(event.BIRTHDATE),
-      religion: new FormControl(event.RELIGION),
-      parentname: new FormControl(event.PARENTNAME),
-      parentaddress: new FormControl(event.PARENTADDRESS),
-      parentphone: new FormControl(event.PARENTPHONE),
+      FULLNAME: new FormControl(event.FULLNAME),
+      ADDRESS: new FormControl(event.ADDRESS),
+      TELEPHONE: new FormControl(event.TELEPHONE),
+      BIRTHPLACE: new FormControl(event.BIRTHPLACE),
+      BIRTHDATE: new FormControl(event.BIRTHDATE),
+      RELIGION: new FormControl(event.RELIGION),
+      PARENTNAME: new FormControl(event.PARENTNAME),
+      PARENTADDRESS: new FormControl(event.PARENTADDRESS),
+      PARENTPHONE: new FormControl(event.PARENTPHONE),
     });
+
     this.modalsService
       .show()
-      .then(() => {
-
+      .then(async () => {
+        await this.http.post(this.apiUrl, event)
+        .subscribe((response) => {
+          console.log('response: ', response);
+        });
       })
       .catch((err) => {
-
+        console.log('cancel ', err);
       });
   }
 
@@ -91,7 +95,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
     this.modalsService
       .show()
       .then(() => {
-        console.warn('ok clicked ', this.modalsFormGroup);
+        console.warn('ok clicked ');
       })
       .catch((err) => {
         console.warn('rejected');

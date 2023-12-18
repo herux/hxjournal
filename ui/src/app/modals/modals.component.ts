@@ -16,11 +16,11 @@ export class ModalsComponent implements OnInit {
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
-  okClicked() {
+  okClicked(event: any) {
     this.onOk.emit();
   }
 
-  cancelClicked() {
+  cancelClicked(event: any) {
     this.onCancel.emit();
   }
 

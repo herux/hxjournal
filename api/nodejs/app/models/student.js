@@ -2,20 +2,20 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var StudentSchema = new Schema({
-	fullname: String,
-    address: String,
-    telephone: String,
-    birthplace: String,
-    birthdate: Date,
-    gender: String,
-    religion: String,
-    parentname: String,
-    parentaddress: String,
-    parentphone: String,
-    parentjob: String,
-    picture: String,
-    createdat: Date,
-    updateat: Date
+	FULLNAME: String,
+    ADDRESS: String,
+    TELEPHONE: String,
+    BIRTHPLACE: String,
+    BIRTHDATE: Date,
+    GENDER: String,
+    RELIGION: String,
+    PARENTNAME: String,
+    PARENTADDRESS: String,
+    PARENTPHONE: String,
+    PARENTJOB: String,
+    PICTURE: String,
+    CREATEDAT: Date,
+    UPDATEAT: Date
 });
 
 module.exports = mongoose.model('Student', StudentSchema);
