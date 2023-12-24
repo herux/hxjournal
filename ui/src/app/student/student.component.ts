@@ -13,7 +13,7 @@ import { ModalsService } from '../modals/modals.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-student',
+  selector: 'hxstudent',
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
@@ -65,7 +65,6 @@ export class StudentComponent implements OnInit, AfterViewInit {
   }
 
   tableRowClicked(event: any) {
-    console.log('tableRowClicked: ', event)
     this.modalsFormGroup = new FormGroup({
       FULLNAME: new FormControl(event.FULLNAME),
       ADDRESS: new FormControl(event.ADDRESS),

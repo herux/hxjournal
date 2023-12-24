@@ -18,7 +18,7 @@
       <div class="card-body table-responsive p-0">
         <table class="table table-hover text-nowrap">
           <thead>
-            <tr>
+            <tr *ngIf="data != undefined">
               <th *ngFor="let column of data[0] | keyvalue: unsorted">
                 {{column.key}}
               </th>
@@ -35,7 +35,7 @@
       </div>
 
       <div class="row">
-        <div class="col align-self-start">
+        <div class="col align-self-start" *ngIf="data != undefined">
           <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing {{pagination.page}} of {{pagination.total_pages}} pages. {{pagination.total_rows}} total entries</div>
         </div>
         <div class="align-items-end">

@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Config } from '../models/config';
 import {HttpClient} from "@angular/common/http";
-import { Observable, throwError } from 'rxjs';
-import { Coa } from '../models/coa';
 import { ConfigService } from '../config/config.service';
 import { Toolaction } from '../models/toolaction';
 import { UtilsService } from '../common/utils';

@@ -11,6 +11,7 @@ export class ModalsComponent implements OnInit {
   @Output() onOk: EventEmitter<any> = new EventEmitter();
   @Input() title: string;
   @Input() content: any;
+  @Input() size: string;
   onCancel: EventEmitter<any> = new EventEmitter();
   style: any;
 

@@ -20,15 +20,15 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
 	let newJournal = new Journal({
-		journal_no: req.body.journal_no.journal_no,
-		description: req.body.description,
-		total: req.body.total,
-		reff_no: req.body.reff_no,
-		reff_type: req.body.reff_type,
-		createat: new Date,
-		updateat: new Date,
-		transactionat: req.body.transactionat,
-		journal_date: new Date,
+		JOURNAL_NO: req.body.JOURNAL_NO,
+		DESCRIPTION: req.body.DESCRIPTION,
+		TOTAL: req.body.TOTAL,
+		REFF_NO: req.body.REFF_NO,
+		REFF_TYPE: req.body.REFF_TYPE,
+		CREATEAT: new Date,
+		UPDATEAT: new Date,
+		TRANSACTIONAT: req.body.TRANSACTIONAT,
+		JOURNAL_DATE: new Date,
 	})
 
 	newJournal.save((err) => {

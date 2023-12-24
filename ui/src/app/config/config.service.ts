@@ -28,4 +28,8 @@ export class ConfigService {
     return configData.host + configData.studentDataUrl;
   }
 
+  getJournalApiUrl() {
+    return configData.host + configData.journalDataUrl;
+  }
+
 }

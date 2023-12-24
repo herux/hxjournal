@@ -1,1 +1,13 @@
-<hxtable title="Journals" [pagination]="pagination" [toolactions]="toolactions" [apiUrl]="apiUrl" [fields]="fields"></hxtable>
+<hxtable title="Journals" [toolactions]="toolactions" [apiUrl]="apiUrl" [fields]="fields" (rowClicked)="tableRowClicked($event)"></hxtable>
+<hxmodals #hxmodals title="Journal Dialogs" size="modal-lg">
+    <div class="card-body">
+        <form [formGroup]="modalsFormGroup">
+            <div class="form-group">
+                <label for="JOURNAL_NO">Journal Number</label>
+                <input type="text" formControlName="JOURNAL_NO" class="form-control" id="JOURNAL_NO" placeholder="Enter Journal Number">
+            </div>
+        </form>
+        <hxtable title="Journal Details" [toolactions]="toolactions" [apiUrl]="apiUrl" [fields]="fields"></hxtable>
+    </div>
+</hxmodals>
+
