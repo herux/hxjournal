@@ -2,12 +2,41 @@
 <hxmodals #hxmodals title="Journal Dialogs" size="modal-lg">
     <div class="card-body">
         <form [formGroup]="modalsFormGroup">
-            <div class="form-group">
-                <label for="JOURNAL_NO">Journal Number</label>
-                <input type="text" formControlName="JOURNAL_NO" class="form-control" id="JOURNAL_NO" placeholder="Enter Journal Number">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="JOURNAL_NO">Journal Number</label>
+                    <input type="text" formControlName="JOURNAL_NO" class="form-control" id="JOURNAL_NO" placeholder="Enter Journal Number">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="REFF_NO">Reff Number</label>
+                    <input type="text" formControlName="REFF_NO" class="form-control" id="REFF_NO" placeholder="Enter your Journal Reference Number">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="REFF_TYPE">Reff Type</label>
+                    <input type="text" formControlName="REFF_TYPE" class="form-control" id="REFF_TYPE" placeholder="Pick reff types">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="JOURNAL_DATE">Journal Date</label>
+                    <input type="text" formControlName="JOURNAL_DATE" class="form-control" id="JOURNAL_DATE" placeholder="Pick Journal Date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="TRANSACTIONAT">Transaction Date</label>
+                    <input type="text" formControlName="TRANSACTIONAT" class="form-control" id="TRANSACTIONAT" placeholder="Transaction Date">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="DESCRIPTION">Description</label>
+                    <input type="text" formControlName="DESCRIPTION" class="form-control" id="DESCRIPTION" placeholder="Enter your Journal Description">
+                </div>
             </div>
         </form>
-        <hxtable title="Journal Details" [toolactions]="toolactions" [apiUrl]="apiUrl" [fields]="fields"></hxtable>
+        <hr class="mt-2 mb-3"/>
+        <hxtable [id]="'journaldetails1'" title="Journal Details" [toolactions]="toolactionDetails" [apiUrl]="apiUrl" [fields]="fields"></hxtable>
     </div>
 </hxmodals>
-
+<hxcoabrowse #hxcoabrowse title="COA Browser" size="modal-sm">
+    
+</hxcoabrowse>

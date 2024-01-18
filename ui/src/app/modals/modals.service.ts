@@ -7,15 +7,14 @@ export class ModalsService {
 
   register(modals: ModalsComponent) {
     this.registeredModals = modals;
-    console.log('this.registeredModals #2: ', this.registeredModals);
   }
 
   show() {
     return new Promise((resolve, reject) => {      
+      console.log('ModalsService registered');
       this.registeredModals.show();      
       this.registeredModals.onOk.subscribe(() => {
         this.registeredModals.hide();
-        resolve();
       });
       this.registeredModals.onCancel.subscribe(() => {
         this.registeredModals.hide();

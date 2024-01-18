@@ -7,8 +7,10 @@ import { UtilsService } from '../common/utils';
 import { ModalsComponent } from '../modals/modals.component'; 
 import { FormControl, FormGroup } from '@angular/forms';
 import { ModalsService } from '../modals/modals.service';
+import { CoabrowserService } from '../coabrowser/coabrowser.service';
 import { BtnEventEmitterService } from '../btn-event-emitter.service';
 import { ToolactionServiceEvent } from '../toolaction-service-event';
+import { CoabrowserComponent } from '../coabrowser/coabrowser.component';
 
 @Component({
   selector: 'hxjournal',
@@ -18,19 +20,28 @@ import { ToolactionServiceEvent } from '../toolaction-service-event';
 export class JournalComponent implements OnInit {
   apiUrl: any = '';
   toolactions: Toolaction[] = [];
+  toolactionDetails: Toolaction[] = [];
   fields: string[];
   private _serviceSubscription : any;
 
   @ViewChild('hxmodals') 
   private modalsDialog: ModalsComponent;
+  @ViewChild('hxcoabrowse') 
+  private coaBrowseDialog: CoabrowserComponent;
 
   modalsFormGroup = new FormGroup({
     JOURNAL_NO: new FormControl(''),
+    DESCRIPTION: new FormControl(''),
+    TOTAL: new FormControl(''),
+    REFF_NO: new FormControl(''),
+    REFF_TYPE: new FormControl(''),
+    TRANSACTIONAT: new FormControl(''),
+    JOURNAL_DATE: new FormControl(''),    
   });
 
   constructor(private http:HttpClient, private configService: ConfigService, 
     private utilsService: UtilsService, private btnEmitter: BtnEventEmitterService,
-    private modalsService: ModalsService) {
+    private modalsService: ModalsService, private coabrowerService: CoabrowserService) {
       this.apiUrl = this.configService.getJournalApiUrl();
       this._serviceSubscription = this.btnEmitter.onToolActionBtnClick.subscribe({
         next: (event: ToolactionServiceEvent) => {
@@ -61,11 +72,17 @@ export class JournalComponent implements OnInit {
   }
 
   filterTAClicked() {
-
+    // this.coabrowerService
+    //   .show()
+    //   .then(() => {
+    //     console.warn('ok filterTAClicked ');
+    //   })
+    //   .catch((err) => {
+    //     console.warn('reject filterTAClicked');
+    //   });
   }
 
   addTAClicked() {
-    console.log('addTAClicked 0');
     this.modalsService
       .show()
       .then(() => {
@@ -80,13 +97,37 @@ export class JournalComponent implements OnInit {
 
   }
 
+  getToolActionDetails() {
+    let TA_CONST = [
+      // { btnClass: 'btn btn-default', icon: 'fas fa-filter', action: 'filterTAClicked' },
+      { btnClass: 'btn btn-default', icon: 'fas fa-plus', action: 'addJournalDetailClicked' },
+    ];
+    for (let index = 0; index < TA_CONST.length; index++) {
+      let toolaction = TA_CONST[index]; 
+      this.toolactionDetails.push(toolaction);   
+    }
+  }
+
+  addJournalDetailClicked() {
+    this.coabrowerService
+      .show()
+      .then(() => {
+        console.warn('ok addJournalDetailClicked ');
+      })
+      .catch((err) => {
+        console.warn('reject addJournalDetailClicked');
+      });
+  }
+
   ngAfterViewInit() {
     this.modalsService.register(this.modalsDialog);
+    this.coabrowerService.register(this.coaBrowseDialog);
   }
 
   ngOnInit(): void {
     // this.fields = ['Fullname', 'Birthdate', 'Birthplace', 'Gender', 'Parentname'];
     this.getToolActions();
+    this.getToolActionDetails();
   }
 
 }

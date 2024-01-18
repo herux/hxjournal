@@ -38,7 +38,7 @@ import { GenderfieldPipe } from './genderfield.pipe';
     StudentComponent,
     StudentpaymentComponent,
     DatefieldPipe,
-    GenderfieldPipe
+    GenderfieldPipe,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +46,7 @@ import { GenderfieldPipe } from './genderfield.pipe';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     BtnEventEmitterService
