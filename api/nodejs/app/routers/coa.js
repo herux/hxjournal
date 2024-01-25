@@ -29,6 +29,31 @@ router.get('/', (req, res, next) => {
 	});
 })
 
+router.get('/coa-leave', (req, res, next) => {
+    let query = req.query;
+    Coa
+	    .find(query)
+		.limit(parseInt(query.limit))
+		.sort(query.order)
+		.skip(parseInt(query.page))
+	    .exec(function (err, data) {
+		    if (err) 
+				return Utils.setResponse(res, false, err, {});
+		    
+			Coa.count().exec((err, count) => {
+				let dataObj = {
+					data,
+					pagination: {
+						total_rows: count,
+						page: parseInt(query.page) + 1,
+						total_pages: count / query.limit
+					}
+				}
+				Utils.setResponse(res, true, err, dataObj)
+			})
+	});
+})
+
 router.post('/', (req, res, next) => {
 	let newCoa = new Coa({
 		coa_gen : req.body.coa_gen,

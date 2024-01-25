@@ -9,7 +9,6 @@ export class CoabrowserService {
     
       show() {
         return new Promise((resolve, reject) => {      
-          console.log('CoabrowserService registered');
           this.registeredCoaBrowser.show();      
           this.registeredCoaBrowser.onOk.subscribe(() => {
             this.registeredCoaBrowser.hide();
